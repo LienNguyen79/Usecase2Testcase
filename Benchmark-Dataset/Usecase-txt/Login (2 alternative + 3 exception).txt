@@ -1,0 +1,37 @@
+Use case Login phức tạp 
+
+BASIC FLOW
+1. Người dùng truy cập ứng dụng Medium.
+2. Người dùng chọn phương thức đăng nhập bằng tài khoản Medium
+3. Người dùng nhập tài khoản Medium và chọn lệnh đăng nhập
+4. Hệ thống xác thực thông tin đăng nhập thành công và cho phép người dùng truy cập ứng dụng
+5. Hệ thống ghi nhận hoạt động đăng nhập thành công vào Activity Log.
+
+
+
+ALTERNATIVE FLOW 
+2a. Người dùng chọn phương thức đăng nhập bằng tài khoản Gmail
+2a1. Hệ thống chuyển sang màn hình đăng nhập của Google
+3a. Người dùng nhập tài khoản Google và chọn lệnh đăng nhập
+4a. Google xác thực thông tin đăng nhập thành công và cho phép người dùng truy cập ứng dụng
+Use Case tiếp tục bước 5.
+
+ 
+
+2b. Người dùng chọn phương thức đăng nhập bằng tài khoản Facebook
+2b1. Hệ thống chuyển sang màn hình đăng nhập của Facebook
+3b. Người dùng nhập tài khoản Facebook và chọn lệnh đăng nhập
+4b. Facebook xác thực thông tin đăng nhập thành công và cho phép người dùng truy cập ứng dụng
+Use Case tiếp tục bước 5.
+
+
+EXCEPTION FLOW 
+4c. Hệ thống xác thực thông tin đăng nhập không thành công và hiển thị thông báo.
+4c1. Người dùng chọn lệnh hủy đăng nhập.
+Use Case dừng lại.
+
+4c2. Người dùng chọn lệnh lấy lại mật khẩu
+Use Case tiếp tục Use Case UC1-3
+
+4c3. Người dùng chọn lệnh khóa tài khoản
+Use Case tiếp tục Use Case UC1-4

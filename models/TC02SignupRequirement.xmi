@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC02Signup"
+    description="User wants to signup an account on app">
+  <actor name="Customer"/>
+  <actor name="System"/>
+  <mainFlow>
+    <mainstep
+        action="Customer chooses the register function"
+        stepID="1"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System displays the registration interface"
+        stepID="2"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Customer enters personal information and submit registration"
+        stepID="3"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System checks and validates account registration information"
+        stepID="4"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System saves account information and announces successful registration"
+        stepID="5"
+        performedBy="//@actor.1"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System informs error"
+        stepID="4.2"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If system check and validates failed account registration information"/>
+  </alternativeflow>
+</FunctionalRequirement>

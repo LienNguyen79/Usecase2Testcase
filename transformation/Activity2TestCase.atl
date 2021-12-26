@@ -1,0 +1,30 @@
+-- @path ActivityMM=/Usecase2Testcase/metamodels/Activity_MetaModel.ecore
+
+query Activity2TestCase = ActivityMM!ControlFlowGraph.allInstances() -> collect(
+	cfg | cfg.toTestSuite().writeTo('/Usecase2Testcase/models/' + cfg.name + '.txt'));
+
+helper context ActivityMM!ControlFlowGraph def: toTestSuite() : String =
+	self.path -> iterate(p; result: String = '' |
+	result + 'Test Case #' + self.path.indexOf(p) + '\n' + p.toTestCase() + '\n'
+);
+
+helper context ActivityMM!Path def: toTestCase() : String =
+	self.nodes -> iterate(n; result: String = '' |
+	result + n.toText() + '\n'
+);
+
+--helper context ActivityMM!InitialNode def: toText() : String =
+--	self.name;
+
+helper context ActivityMM!InitialNode def: toText() : String =
+	self.name;
+
+helper context ActivityMM!FinalActivityNode def: toText() : String =
+	self.name;
+
+helper context ActivityMM!Action def: toText() : String = 
+	self.name + '.' + self.action;
+
+helper context ActivityMM!DecisionNode def: toText() : String =
+	self.name + '.' + self.predicate.condition;
+

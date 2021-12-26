@@ -1,0 +1,13 @@
+Luồng đăng ký :
+
+BASIC FLOW:
+1.	Khách chọn chức năng Đăng ký
+2.	Hệ thống hiển thị giao diện đăng ký
+3.	Khách nhập các thông tin cá nhân và gửi đăng ký
+4.	Hệ thống kiểm tra và xác thực thông tin đăng ký tài khoản thành công 
+5.	Hệ thống lưu thông tin tài khoản và thông báo đăng ký thành công
+
+
+EXCEPTION FLOW
+4b. Hệ thống kiểm tra và xác thực thông tin đăng ký không thành công
+Use case quay lại bước 2

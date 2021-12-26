@@ -1,0 +1,344 @@
+-- @path UseCaseMM=/Usecase2Testcase/metamodels/Usecase_Metamodel.ecore
+-- @path ActivityMM=/Usecase2Testcase/metamodels/Activity_MetaModel.ecore
+--khai báo tên module 
+module usecase2activity;
+create OUT : ActivityMM from IN : UseCaseMM;
+
+helper def: decisionNodeID : Integer = 0;
+
+helper def: currentEdge : ActivityMM!ActivityEdge = OclUndefined;
+
+helper def: currentNode : ActivityMM!Action = OclUndefined;
+
+helper def: edgeSet : Sequence(ActivityMM!ActivityEdge) = Sequence{};
+
+helper def: decisionEdgeSet: Sequence(ActivityMM!ActivityEdge) = Sequence{};
+
+--helper def: decisionSubSet: Sequence(ActivityMM!DecisionNode) = Sequence{};
+
+helper def: nodeSet : Sequence(ActivityMM!ActivityNode) = Sequence{};
+
+helper def: decisionSet: Sequence(ActivityMM!DecisionNode) = Sequence{};
+
+helper def: refNodeSet: OrderedSet(ActivityMM!ActivityNode) = OrderedSet{};
+
+helper def: secondaryActionSet: Sequence(ActivityMM!ActivityNode) = Sequence{};
+
+helper def: indexSet: Sequence(Integer) = Sequence{};
+
+helper def: refIdSet: Sequence(Integer) = Sequence{};
+
+helper def: startId: Integer = 0;
+
+helper def: lastId: Integer = 0;
+
+helper def: mainPath: ActivityMM!Path = OclUndefined;
+
+helper def: findRefNode(node: ActivityMM!DecisionNode) : ActivityMM!ActivityNode =
+	let temp : ActivityMM!ActivityNode = thisModule.edgeSet -> select(e | e.targetNode = node) -> first().sourceNode in
+		if (temp.oclIsTypeOf(ActivityMM!DecisionNode)) then
+			thisModule.findRefNode(temp)
+		else
+			temp
+		endif;
+
+helper def: getNodeChain(start: ActivityMM!ActivityNode) : Sequence(ActivityMM!ActivityNode) =
+	let chain : Sequence(ActivityMM!ActivityNode) = Sequence{start} in
+		if (thisModule.edgeSet->select(e | e.sourceNode = start and thisModule.secondaryActionSet->includes(e.targetNode))->isEmpty()) then
+			chain
+		else
+			let temp : ActivityMM!ActivityEdge = thisModule.edgeSet->select(e | e.sourceNode = start and 
+					thisModule.secondaryActionSet->includes(e.targetNode))->first() in
+						chain.union(thisModule.getNodeChain(temp.targetNode))
+		endif;
+
+helper context UseCaseMM!FunctionalRequirement def: getAllActionSteps() : Sequence(UseCaseMM!ActionStep) =
+	let altActionSteps : Sequence(UseCaseMM!ActionStep) =
+		if (not self.alternativeflow.isEmpty()) then
+			(self.alternativeflow -> collect(altF | altF.mainstep)).flatten()
+		else
+			Sequence{}
+		endif
+	in let actionSteps : Sequence(UseCaseMM!ActionStep) = self.mainFlow.mainstep in
+		actionSteps.union(altActionSteps);
+	
+			
+entrypoint rule createStarEndNodes() {
+	to
+		initNode: ActivityMM!InitialNode(
+			name <- 'Start'	
+		),
+		finalNode: ActivityMM!FinalActivityNode(
+			name <- 'End'	
+		)
+	do {
+		-- thisModule.nodeSet <- thisModule.nodeSet.union(Sequence{initNode, finalNode});
+		-- thisModule.currentNode <- initNode;	
+	}
+}
+
+endpoint rule createControlFlowGraph() {
+	to
+		cfg: ActivityMM!ControlFlowGraph(
+			name <- ActivityMM!Activity.allInstances().first().name + 'TestCases'
+		)
+	do {
+		-- append initial node and final node to the activity diagram
+		ActivityMM!Activity.allInstances().first().initialNode <- ActivityMM!InitialNode.allInstances().first();
+		ActivityMM!Activity.allInstances().first().finalNode <- ActivityMM!FinalActivityNode.allInstances().first();
+		-- refining edges before appending to the activity diagram
+		
+		thisModule.nodeSet <- thisModule.nodeSet.prepend(ActivityMM!InitialNode.allInstances().first());
+		thisModule.nodeSet <- thisModule.nodeSet.append(ActivityMM!FinalActivityNode.allInstances().first());
+		
+--		thisModule.refNodeSet.first().name <- 'Test-' + thisModule.nodeSet.indexOf(thisModule.refNodeSet.first());
+
+
+		-- create edges from the first nodes to the previous node of first ref node step
+		thisModule.startId <- thisModule.nodeSet.indexOf(thisModule.nodeSet.first());
+		thisModule.refIdSet <- thisModule.refNodeSet->collect(n | thisModule.nodeSet.indexOf(n));
+		
+--		thisModule.refNodeSet.first().name <- 'Test-' + thisModule.indexSet.first();
+		
+		for (k in thisModule.refIdSet) {
+			thisModule.lastId <- k;
+			thisModule.indexSet <- thisModule.nodeSet->subSequence
+									(thisModule.startId, thisModule.lastId)->
+									collect(n | thisModule.nodeSet.indexOf(n));
+			for (i in thisModule.indexSet) {
+				if (not (i = thisModule.lastId)) {
+					thisModule.currentEdge <- 
+						thisModule.createEdgeFromActivityNode(
+							thisModule.nodeSet.at(i), 
+							thisModule.nodeSet.at(thisModule.indexSet.at(thisModule.indexSet.indexOf(i)+1)));
+					thisModule.edgeSet <- thisModule.edgeSet.append(thisModule.currentEdge);
+				}
+			}
+			thisModule.startId <- k + 1;
+		}
+		
+		-- create edges from next node of last reference node step to the end
+--		thisModule.startId <- thisModule.nodeSet.indexOf(thisModule.refNodeSet.last()) + 1;
+--		thisModule.lastId <- thisModule.nodeSet.indexOf(thisModule.secondaryActionSet.last()) + 1;
+--		thisModule.currentEdge <- thisModule.createEdgeFromActivityNode(
+--									thisModule.nodeSet.at(thisModule.startId), 
+--									thisModule.nodeSet.at(thisModule.lastId));
+--		thisModule.edgeSet <- thisModule.edgeSet.append(thisModule.currentEdge);
+		
+		thisModule.startId <- thisModule.nodeSet.indexOf(thisModule.refNodeSet.last()) + 1; 
+		thisModule.lastId <- thisModule.nodeSet.size();
+		
+		thisModule.indexSet <- thisModule.nodeSet -> subSequence(thisModule.startId, thisModule.lastId)
+			-> select(nd | not thisModule.secondaryActionSet->includes(nd))
+			-> collect(n | thisModule.nodeSet.indexOf(n));
+		for (j in thisModule.indexSet) {
+			if (not (j = thisModule.nodeSet.size())) {
+				thisModule.currentEdge <- 
+				thisModule.createEdgeFromActivityNode(
+					thisModule.nodeSet.at(j), 
+					thisModule.nodeSet.at(thisModule.indexSet.at(thisModule.indexSet.indexOf(j)+1)));
+				thisModule.edgeSet <- thisModule.edgeSet.append(thisModule.currentEdge);
+			}
+		}
+		for (nd in thisModule.refNodeSet) {
+			thisModule.decisionEdgeSet <- thisModule.edgeSet -> select(e | e.sourceNode = nd);
+			-- create edge from last decision node to the next action node of ref node
+			thisModule.currentEdge <- thisModule.createEdgeFromActivityNode(
+										thisModule.decisionEdgeSet.last().targetNode, 
+										thisModule.nodeSet.at(thisModule.nodeSet.indexOf(nd)+1));
+			thisModule.edgeSet <- thisModule.edgeSet.append(thisModule.currentEdge);
+			thisModule.indexSet <- thisModule.decisionEdgeSet->collect(e | thisModule.edgeSet.indexOf(e));
+			if (thisModule.indexSet.size() > 1) {
+				for (i in thisModule.indexSet) {
+					if (not (thisModule.indexSet.indexOf(i) = thisModule.indexSet.size())) {
+						thisModule.edgeSet.at(thisModule.indexSet.at(thisModule.indexSet.indexOf(i)+1)).sourceNode <- thisModule.edgeSet.at(i).targetNode;
+						thisModule.edgeSet.at(thisModule.indexSet.at(thisModule.indexSet.indexOf(i)+1)).edgeName <- 
+							thisModule.edgeSet.at(thisModule.indexSet.at(thisModule.indexSet.indexOf(i)+1)).sourceNode.name + 
+							'-' + thisModule.edgeSet.at(thisModule.indexSet.at(thisModule.indexSet.indexOf(i)+1)).targetNode.name;
+					}
+				}
+			}
+			
+		}
+		-- append all edge to the main activity diagram
+		ActivityMM!Activity.allInstances().first().activityEdge <- thisModule.edgeSet;
+		
+		-- append main path (main flow action) to cfg
+		
+		-- 
+		thisModule.mainPath <- thisModule.createMainPathForActivity();
+		thisModule.mainPath.nodes.debug();
+		
+		cfg.path <- cfg.path.append(thisModule.mainPath);
+		
+		for (d in thisModule.decisionSet) {
+			cfg.path <- cfg.path.append(thisModule.createPathFromDecisionNode(thisModule.mainPath, d));	
+		}
+	}
+}
+
+rule createMainPathForActivity() {
+	to
+		path: ActivityMM!Path() 
+	do {
+		for (n in thisModule.nodeSet->select(i | not thisModule.secondaryActionSet->includes(i))){
+			path.nodes <- path.nodes.append(n);
+		}
+		path;
+	}
+}
+
+rule createPathFromDecisionNode(mainPath: ActivityMM!Path, node: ActivityMM!DecisionNode) {
+	to
+		path: ActivityMM!Path() 
+	do {
+		path.nodes <- mainPath.nodes->subSequence(1, mainPath.nodes.indexOf(thisModule.findRefNode(node)));
+		--path.nodes.debug();
+		path.nodes <- path.nodes.union(thisModule.getNodeChain(node));
+		--path.nodes.debug();
+		
+--		path.nodes <- path.nodes.union(
+--			mainPath.nodes->subSequence(mainPath.nodes.indexOf(
+--				thisModule.edgeSet->select(e | e.sourceNode = path.nodes.last())->first().targetNode), 
+--				mainPath.nodes.size()));
+		for (n in mainPath.nodes->subSequence(mainPath.nodes.indexOf(
+				thisModule.edgeSet->select(e | e.sourceNode = path.nodes.last())->first().targetNode), 
+				mainPath.nodes.size())) {
+			if (path.nodes -> includes(n)) {
+				path.nodes <- path.nodes.append(thisModule.createNodeForPath(n));
+			} else {
+				path.nodes <- path.nodes.append(n);	
+			}
+		}
+		-- path.nodes <- (path.nodes -> select(n | not n.oclIsTypeOf(ActivityMM!DecisionNode)));
+		path.nodes.debug();
+		path;
+	}
+}
+
+rule createNodeForPath(node : ActivityMM!Action){
+	to
+		out : ActivityMM!Action (
+			name <- node.name,
+			action <- node.action
+		)
+	do {
+		out;	
+	}
+}
+
+
+
+rule FunctionalRequirement2Activity {
+	from
+		usecase: UseCaseMM!FunctionalRequirement
+	to
+		activity: ActivityMM!Activity(
+			name <- usecase.name,
+			description <- usecase.description,
+			postCondition <- usecase.postConditions,
+			preCondition <- usecase.preConditions,
+			activitypartition <- usecase.actor,
+			actionNode <- usecase.getAllActionSteps(),
+			decisionNode <- usecase.alternativeflow
+		)
+	do {
+		--activity.activityEdge <- activity.activityEdge.union(thisModule.edgeSet);
+	}
+}
+
+rule UCActionStep2ADAction {
+	from
+		actionStep: UseCaseMM!ActionStep
+	
+	to
+		actionNode: ActivityMM!Action(
+			action <- actionStep.action,
+			name <- actionStep.stepID,
+			performedBy <- actionStep.performedBy
+		)
+	do {
+--		thisModule.currentEdge <- thisModule.createEdgeFromActivityNode(
+--				thisModule.currentNode,
+--				actionNode);
+--		thisModule.edgeSet <- thisModule.edgeSet.append(thisModule.currentEdge);
+		thisModule.nodeSet <- thisModule.nodeSet.append(actionNode);
+		thisModule.currentNode <- actionNode;
+	}
+}
+
+rule createEdgeFromActivityNode(sourceNode: ActivityMM!ActivityNode, targetNode: ActivityMM!ActivityNode){
+	to
+		edge: ActivityMM!ActivityEdge(
+			edgeName <- sourceNode.name + '-' + targetNode.name,
+			sourceNode <- sourceNode,
+			targetNode <- targetNode
+		)
+	do {
+		edge;	
+	}
+}
+
+
+rule UCAlternativeFlow2ADDecisionNode {
+	from
+		ucAltFlow: UseCaseMM!AlternativeFlow
+	to
+		adDecisionNode: ActivityMM!DecisionNode (
+			predicate <- ucAltFlow.exceptionCondition
+		)
+	do {
+		thisModule.decisionNodeID <- thisModule.decisionNodeID + 1;
+		adDecisionNode.name <- 'D.' + thisModule.decisionNodeID;
+		-- create edge from reference node to decision node
+		thisModule.decisionSet <- thisModule.decisionSet.append(adDecisionNode);
+		thisModule.currentEdge <- thisModule.createEdgeFromActivityNode(
+			thisModule.nodeSet->select(n | n.name = ucAltFlow.referenceStep.stepID)->first(), 
+			adDecisionNode);
+		thisModule.refNodeSet <- thisModule.refNodeSet.append(thisModule.currentEdge.sourceNode);
+		thisModule.edgeSet <- thisModule.edgeSet.append(thisModule.currentEdge);
+	
+		-- create edges from decision nodes to the first step node of alternative flow
+		thisModule.currentNode <- adDecisionNode;
+		for (st in ucAltFlow.mainstep) {
+			thisModule.currentEdge <-
+				thisModule.createEdgeFromActivityNode(
+					thisModule.currentNode, 
+					thisModule.nodeSet -> select(n|n.name = st.stepID)->first());
+			thisModule.edgeSet <- thisModule.edgeSet.append(thisModule.currentEdge);
+			thisModule.secondaryActionSet <- thisModule.secondaryActionSet.append(thisModule.currentEdge.targetNode);
+			thisModule.currentNode <- thisModule.currentEdge.targetNode;
+		}
+--		thisModule.currentEdge <- 
+--					thisModule.createEdgeFromActivityNode(
+--						adDecisionNode, 
+--						thisModule.nodeSet -> select(n|n.name = ucAltFlow.mainstep.first().stepID)->first());
+--		thisModule.edgeSet <- thisModule.edgeSet.append(thisModule.currentEdge);
+		
+		-- create edge from last step node to next node of alternative flow
+		thisModule.currentEdge <- thisModule.createEdgeFromActivityNode(
+			thisModule.nodeSet -> select(n|n.name = ucAltFlow.mainstep.last().stepID)->first(),
+			thisModule.nodeSet -> select(n | n.name = ucAltFlow.nextStep.stepID)->first()
+			);
+		thisModule.edgeSet <- thisModule.edgeSet.append(thisModule.currentEdge);
+	}
+}
+
+rule UCConstraint2ADConstraint {
+	from
+		ucConstraint: UseCaseMM!Constraint
+	to
+		adConstraint: ActivityMM!Constraint (
+			condition <- ucConstraint.condition
+		)
+}
+
+rule UCActor2ActivityPartition {
+	from
+		ucActor: UseCaseMM!Actor
+	to
+		activityPartition: ActivityMM!ActivityPartition (
+			name <- ucActor.name	
+		)
+}
+

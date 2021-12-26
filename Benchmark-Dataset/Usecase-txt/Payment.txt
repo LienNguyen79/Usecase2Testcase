@@ -1,0 +1,22 @@
+Use case Thanh toán 
+
+Tiền điều kiện: Hệ thống đã tính toán tổng tiền cần thanh toán
+Hậu điều kiện: Người dùng thanh toán đơn hàng thành công 
+
+Basic flow 
+Bước 1: Hệ thống hiển thị màn hình thanh toán 
+Bước 2: Khách hàng nhập thông tin thẻ và xác nhận giao dịch
+Bước 3: Hệ thống yêu cầu ngân hàng xử lý giao dịch
+Bước 4: Ngân hàng tiến hành xử lý giao dịch
+Bước 5: Hệ thống lưu giao dịch và thông báo thanh toán thành công
+
+
+Exception flow 
+2a. Khách hàng nhập thông tin thẻ không chính xác
+3a. Hệ thống thông báo thông tin thẻ không chính xác
+Use case quay lại bước 1
+
+
+4a. Ngân hàng kiểm tra số dư tài khoản không đủ
+5a. Hệ thống thông báo số dư không đủ 
+Use case quay lại bước 1

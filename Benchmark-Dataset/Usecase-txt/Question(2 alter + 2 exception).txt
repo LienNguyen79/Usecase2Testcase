@@ -1,0 +1,45 @@
+Use case hủy kích hoạt tài khoản học viên 
+
+BASIC FLOW 
+
+1. Admin mở tài khoản học viên cần hủy kích hoạt
+
+2. Hệ thống hiển thị màn hình thông tin học viên
+
+3. Admin chọn lệnh hủy kích hoạt
+
+4. Hệ thống yêu cầu nhập mã OTP để xác nhận
+
+5. Admin nhập đúng mã OTP để xác nhận lệnh hủy kích hoạt
+
+6. Hệ thống kiểm tra mã OTP và tiến hành hủy kích hoạt
+
+7. Hệ thống hiển thị thông báo đã hủy kích hoạt.
+
+ALTERNATIVE FLOW
+
+1a. Admin chọn học viên cần hủy kích hoạt ở lưới học viên.
+Use Case tiếp tục bước 3.
+
+4a. Admin chọn phương thức xác nhận khác: Xác nhận qua reCaptcha
+
+4a1. Hệ thống hiển thị mã reCaptcha và yêu cầu nhập mã reCaptcha để xác nhận
+
+5a. Admin nhập đúng mã reCaptcha để xác nhận lệnh hủy kích hoạt
+
+6a. Hệ thống kiểm tra mã reCaptcha và tiến hành hủy kích hoạt
+Use Case tiếp tục bước 7.
+
+ 
+
+EXCEPTION FLOW
+
+5b. Admin nhập sai mã reCaptcha.
+
+5b1. Hệ thống báo lỗi và hủy bỏ lệnh hủy kích hoạt học viên.
+Use Case dừng lại.
+
+5c. Admin nhập sai mã OTP.
+
+5c1. Hệ thống báo lỗi và hủy bỏ lệnh hủy kích hoạt học viên.
+Use Case dừng lại.

@@ -1,0 +1,26 @@
+Use case thuê xe
+
+Tiền điều kiên: User đã đăng nhập hệ thống
+Hậu điều kiện: User thuê được xe
+
+Basic flow
+
+Bước 1: Khách hàng chọn thuê xe
+Bước 2: Hệ thống hiển thị màn hình nhập mã xe	
+Bước 3: Khách hàng nhập mã xe muốn thuê 
+Bước 4: Hệ thống kiểm tra mã xe 
+Bước 5: Hệ thống hiển thị thông tin thuê xe
+Bước 6: Khách hàng xác nhận thuê xe
+Bước 7: Hệ thống gọi UC “Thanh toán”
+Bước 8: Hệ thống kích hoạt mở khóa xe
+Bước 9: Hệ thống kích hoạt đồng hồ bấm giờ
+
+
+Exception flow
+3.1 Khách hàng nhập sai mã xe 
+4.1 Hệ thống thông báo lỗi
+Use case quay lại bước 2
+
+3.2 Khách hàng nhập mã xe nhưng xe đó đã được thuê
+4.2 Hệ thống thông báo xe đã được thuê
+Use case quay lại bước 2

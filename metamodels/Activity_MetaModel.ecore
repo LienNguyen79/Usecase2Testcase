@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ActivityDiagram" nsURI="http://omg.org/spec/UML/ActivityDiagram">
+  <eClassifiers xsi:type="ecore:EClass" name="Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activitypartition" lowerBound="1"
+        upperBound="-1" eType="#//ActivityPartition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="preCondition" upperBound="-1"
+        eType="#//Constraint" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postCondition" upperBound="-1"
+        eType="#//Constraint" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activityEdge" lowerBound="1"
+        upperBound="-1" eType="#//ActivityEdge" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actionNode" upperBound="-1"
+        eType="#//Action" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="finalNode" eType="#//FinalActivityNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initialNode" eType="#//InitialNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="decisionNode" upperBound="-1"
+        eType="#//DecisionNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityPartition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityNode" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+        eType="#//ActivityEdge" eOpposite="#//ActivityEdge/sourceNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
+        eType="#//ActivityEdge" eOpposite="#//ActivityEdge/targetNode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutableNode" eSuperTypes="#//ActivityNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="action" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlNode" eSuperTypes="#//ActivityNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JoinNode" eSuperTypes="#//ControlNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ForkNode" eSuperTypes="#//ControlNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionNode" eSuperTypes="#//ControlNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" lowerBound="1"
+        eType="#//Constraint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialNode" eSuperTypes="#//ControlNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FinalActivityNode" eSuperTypes="#//ControlNode"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//ExecutableNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="performedBy" eType="#//ActivityPartition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityEdge">
+    <eAnnotations source="http://www.obeo.fr/dsl/dnc/archetype">
+      <details key="archetype" value="Role"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceNode" lowerBound="1"
+        eType="#//ActivityNode" eOpposite="#//ActivityNode/outgoing"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetNode" lowerBound="1"
+        eType="#//ActivityNode" eOpposite="#//ActivityNode/incoming"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="edgeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlFlowGraph">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" upperBound="-1" eType="#//Path"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Path">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//ActivityNode"/>
+  </eClassifiers>
+</ecore:EPackage>
