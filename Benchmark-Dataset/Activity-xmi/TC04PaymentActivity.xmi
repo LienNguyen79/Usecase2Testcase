@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC04Payment" description="User wants to access into the system">
+    <activitypartition name="System"/>
+    <activitypartition name="Customer"/>
+    <activitypartition name="Bank"/>
+    <preCondition condition="System calculated the total amount to be paid"/>
+    <postCondition condition="User successfully pays for the order"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@decisionNode.0" edgeName="2-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.5" edgeName="D.1-3.1"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.0" edgeName="3.1-1"/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@decisionNode.1" edgeName="4-D.2"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.6" edgeName="D.2-4.1"/>
+    <activityEdge sourceNode="/0/@actionNode.6" targetNode="/0/@actionNode.0" edgeName="4.1-1"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@finalNode" edgeName="5-End"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.2" edgeName="D.1-3"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.4" edgeName="D.2-5"/>
+    <actionNode outgoing="/0/@activityEdge.7" incoming="/0/@activityEdge.2 /0/@activityEdge.5 /0/@activityEdge.6" name="1" action="System displays payment screen " performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.0" incoming="/0/@activityEdge.7" name="2" action="Customer enters card information and confirms the transaction" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.8" incoming="/0/@activityEdge.10" name="3" action="System asks the bank to process the transaction" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.3" incoming="/0/@activityEdge.8" name="4" action="Bank processes the transaction" performedBy="/0/@activitypartition.2"/>
+    <actionNode outgoing="/0/@activityEdge.9" incoming="/0/@activityEdge.11" name="5" action="System saves transaction and  notifies successful transaction " performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.2" incoming="/0/@activityEdge.1" name="3.1" action="System informs that the card information is incorrect" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.5" incoming="/0/@activityEdge.4" name="4.1" action="System informs that the balance is not enough " performedBy="/0/@activitypartition.0"/>
+    <finalNode incoming="/0/@activityEdge.9" name="End"/>
+    <initialNode outgoing="/0/@activityEdge.6" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.10" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="If customer entered incorrect card information"/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.4 /0/@activityEdge.11" incoming="/0/@activityEdge.3" name="D.2">
+      <predicate condition="If the customer's account balance is not enough"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC04PaymentTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@decisionNode.0 /0/@actionNode.5 /2 /3 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.1 /0/@actionNode.6 /4 /5 /6 /7 /0/@actionNode.4 /0/@finalNode"/>
+  </ControlFlowGraph>
+  <Action name="1" action="System displays payment screen "/>
+  <Action name="2" action="Customer enters card information and confirms the transaction"/>
+  <Action name="1" action="System displays payment screen "/>
+  <Action name="2" action="Customer enters card information and confirms the transaction"/>
+  <Action name="3" action="System asks the bank to process the transaction"/>
+  <Action name="4" action="Bank processes the transaction"/>
+</xmi:XMI>

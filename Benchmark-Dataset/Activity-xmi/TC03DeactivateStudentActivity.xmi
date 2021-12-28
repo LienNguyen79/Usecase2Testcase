@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC03DeactivateStudent" description="User wants to access into the system">
+    <activitypartition name="Admin "/>
+    <activitypartition name="System"/>
+    <preCondition condition="Admin loginned in system "/>
+    <postCondition condition="System deactivates the student account"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@decisionNode.0" edgeName="5-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.8" edgeName="D.1-5c1"/>
+    <activityEdge sourceNode="/0/@actionNode.8" targetNode="/0/@actionNode.7" edgeName="5c1-8"/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@decisionNode.1" edgeName="4-D.2"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.9" edgeName="D.2-4a"/>
+    <activityEdge sourceNode="/0/@actionNode.9" targetNode="/0/@actionNode.10" edgeName="4a-5a"/>
+    <activityEdge sourceNode="/0/@actionNode.10" targetNode="/0/@actionNode.11" edgeName="5a-6a"/>
+    <activityEdge sourceNode="/0/@actionNode.11" targetNode="/0/@actionNode.6" edgeName="6a-7"/>
+    <activityEdge sourceNode="/0/@actionNode.11" targetNode="/0/@decisionNode.2" edgeName="6a-D.3"/>
+    <activityEdge sourceNode="/0/@decisionNode.2" targetNode="/0/@actionNode.12" edgeName="D.3-5b1"/>
+    <activityEdge sourceNode="/0/@actionNode.12" targetNode="/0/@actionNode.7" edgeName="5b1-8"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@actionNode.2" edgeName="2-3"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.4" edgeName="D.2-5"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.5" edgeName="D.1-6"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.6" edgeName="6-7"/>
+    <activityEdge sourceNode="/0/@actionNode.6" targetNode="/0/@actionNode.7" edgeName="7-8"/>
+    <activityEdge sourceNode="/0/@actionNode.7" targetNode="/0/@actionNode.8" edgeName="8-5c1"/>
+    <activityEdge sourceNode="/0/@actionNode.8" targetNode="/0/@actionNode.9" edgeName="5c1-4a"/>
+    <activityEdge sourceNode="/0/@actionNode.9" targetNode="/0/@actionNode.10" edgeName="4a-5a"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.5" edgeName="6-6"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@actionNode.4" edgeName="5-5"/>
+    <activityEdge sourceNode="/0/@decisionNode.2" targetNode="/0/@actionNode.11" edgeName="D.3-6a"/>
+    <actionNode outgoing="/0/@activityEdge.12" incoming="/0/@activityEdge.11" name="1" action="Admin opens a student account that needs to be deactivated" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.13" incoming="/0/@activityEdge.12" name="2" action="System displays the student information screen" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.14" incoming="/0/@activityEdge.13" name="3" action="Admin chooses the deactivate command" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.3" incoming="/0/@activityEdge.14" name="4" action="System asks to enter the OTP code to confirm" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.0 /0/@activityEdge.23" incoming="/0/@activityEdge.15 /0/@activityEdge.23" name="5" action="Admin enter the correct OTP code to confirm the deactivation order" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.17 /0/@activityEdge.22" incoming="/0/@activityEdge.16 /0/@activityEdge.22" name="6" action="System checks the OTP code and conducts deactivation" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.18" incoming="/0/@activityEdge.7 /0/@activityEdge.17" name="7" action="System displays a deactivated message." performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.19" incoming="/0/@activityEdge.2 /0/@activityEdge.10 /0/@activityEdge.18" name="8" action="Use case ends"/>
+    <actionNode outgoing="/0/@activityEdge.2 /0/@activityEdge.20" incoming="/0/@activityEdge.1 /0/@activityEdge.19" name="5c1" action="System reported an error and canceled the student's order to deactive " performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.5 /0/@activityEdge.21" incoming="/0/@activityEdge.4 /0/@activityEdge.20" name="4a" action="System displays the reCaptcha code and asks to enter the reCaptcha code to confirm" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.6" incoming="/0/@activityEdge.5 /0/@activityEdge.21" name="5a" action="Admin enters the correct reCaptcha code to confirm the deactivation command" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.7 /0/@activityEdge.8" incoming="/0/@activityEdge.6 /0/@activityEdge.24" name="6a" action="System checks the reCaptcha code and conducts deactivation" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.10" incoming="/0/@activityEdge.9" name="5b1" action="System reported an error and canceled the student's order to deactive." performedBy="/0/@activitypartition.1"/>
+    <finalNode name="End"/>
+    <initialNode outgoing="/0/@activityEdge.11" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.16" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="If admin enters wrong OTP code "/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.4 /0/@activityEdge.15" incoming="/0/@activityEdge.3" name="D.2">
+      <predicate condition="If admin chooses another confirmation method: Confirm via reCaptcha"/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.9 /0/@activityEdge.24" incoming="/0/@activityEdge.8" name="D.3">
+      <predicate condition="If admin enters wrong reCaptcha code"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC03DeactivateStudentTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@decisionNode.0 /0/@actionNode.8 /0/@actionNode.9 /0/@actionNode.10 /0/@actionNode.11 /0/@actionNode.6 /0/@actionNode.7 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.1 /0/@actionNode.9 /0/@actionNode.10 /0/@actionNode.11 /0/@actionNode.6 /0/@actionNode.7 /0/@finalNode"/>
+    <path nodes="/0/@decisionNode.2 /0/@actionNode.12 /0/@actionNode.7 /0/@finalNode"/>
+  </ControlFlowGraph>
+</xmi:XMI>

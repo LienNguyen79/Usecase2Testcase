@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC01Login" description="User wants to access into the system">
+    <activitypartition name="User"/>
+    <activitypartition name="System"/>
+    <postCondition condition="System grants access to the user"/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@decisionNode.0" edgeName="4-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.5" edgeName="D.1-4.1"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.1" edgeName="4.1-2"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@decisionNode.1" edgeName="D.1-D.2"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.6" edgeName="D.2-4.2"/>
+    <activityEdge sourceNode="/0/@actionNode.6" targetNode="/0/@actionNode.1" edgeName="4.2-2"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@actionNode.2" edgeName="2-3"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@finalNode" edgeName="5-End"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.4" edgeName="D.2-5"/>
+    <actionNode outgoing="/0/@activityEdge.7" incoming="/0/@activityEdge.6" name="1" action="User asks access into the system" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.8" incoming="/0/@activityEdge.2 /0/@activityEdge.5 /0/@activityEdge.7" name="2" action="System asks for username and password" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.9" incoming="/0/@activityEdge.8" name="3" action="User introduces username and password" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.0" incoming="/0/@activityEdge.9" name="4" action="System validates name and key" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.10" incoming="/0/@activityEdge.11" name="5" action="System allows access and redirects user to the home screen" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.2" incoming="/0/@activityEdge.1" name="4.1" action="System informs that the username has not been registered" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.5" incoming="/0/@activityEdge.4" name="4.2" action="System informs that the password is wrong" performedBy="/0/@activitypartition.1"/>
+    <finalNode incoming="/0/@activityEdge.10" name="End"/>
+    <initialNode outgoing="/0/@activityEdge.6" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.3" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="If the user has not registered in the system"/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.4 /0/@activityEdge.11" incoming="/0/@activityEdge.3" name="D.2">
+      <predicate condition="If the password does not match with username"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC01LoginTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.0 /0/@actionNode.5 /2 /3 /4 /0/@actionNode.4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.1 /0/@actionNode.6 /5 /6 /7 /0/@actionNode.4 /0/@finalNode"/>
+  </ControlFlowGraph>
+  <Action name="2" action="System asks for username and password"/>
+  <Action name="3" action="User introduces username and password"/>
+  <Action name="4" action="System validates name and key"/>
+  <Action name="2" action="System asks for username and password"/>
+  <Action name="3" action="User introduces username and password"/>
+  <Action name="4" action="System validates name and key"/>
+</xmi:XMI>

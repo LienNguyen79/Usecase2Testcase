@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC02Signup" description="User wants to signup an account on app">
+    <activitypartition name="Customer"/>
+    <activitypartition name="System"/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@decisionNode.0" edgeName="4-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.5" edgeName="D.1-4.2"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.1" edgeName="4.2-2"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@actionNode.2" edgeName="2-3"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@finalNode" edgeName="5-End"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.4" edgeName="D.1-5"/>
+    <actionNode outgoing="/0/@activityEdge.4" incoming="/0/@activityEdge.3" name="1" action="Customer chooses the register function" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.5" incoming="/0/@activityEdge.2 /0/@activityEdge.4" name="2" action="System displays the registration interface" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.6" incoming="/0/@activityEdge.5" name="3" action="Customer enters personal information and submit registration" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.0" incoming="/0/@activityEdge.6" name="4" action="System checks and validates account registration information" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.7" incoming="/0/@activityEdge.8" name="5" action="System saves account information and announces successful registration" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.2" incoming="/0/@activityEdge.1" name="4.2" action="System informs error" performedBy="/0/@activitypartition.1"/>
+    <finalNode incoming="/0/@activityEdge.7" name="End"/>
+    <initialNode outgoing="/0/@activityEdge.3" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.8" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="If system check and validates failed account registration information"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC02SignupTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.0 /0/@actionNode.5 /2 /3 /4 /0/@actionNode.4 /0/@finalNode"/>
+  </ControlFlowGraph>
+  <Action name="2" action="System displays the registration interface"/>
+  <Action name="3" action="Customer enters personal information and submit registration"/>
+  <Action name="4" action="System checks and validates account registration information"/>
+</xmi:XMI>

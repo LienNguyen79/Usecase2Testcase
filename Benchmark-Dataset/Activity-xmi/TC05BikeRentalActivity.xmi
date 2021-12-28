@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC05Login" description="User wants to access into the system">
+    <activitypartition name="Customer"/>
+    <activitypartition name="System"/>
+    <preCondition condition="Customer loginned in system "/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@decisionNode.0" edgeName="4-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.9" edgeName="D.1-4.1"/>
+    <activityEdge sourceNode="/0/@actionNode.9" targetNode="/0/@actionNode.1" edgeName="4.1-2"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@decisionNode.1" edgeName="D.1-D.2"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.10" edgeName="D.2-4.2"/>
+    <activityEdge sourceNode="/0/@actionNode.10" targetNode="/0/@actionNode.1" edgeName="4.2-2"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@actionNode.2" edgeName="2-3"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@actionNode.5" edgeName="5-6"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.6" edgeName="6-7"/>
+    <activityEdge sourceNode="/0/@actionNode.6" targetNode="/0/@actionNode.7" edgeName="7-8"/>
+    <activityEdge sourceNode="/0/@actionNode.7" targetNode="/0/@actionNode.8" edgeName="8-9"/>
+    <activityEdge sourceNode="/0/@actionNode.8" targetNode="/0/@finalNode" edgeName="9-End"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.4" edgeName="D.2-5"/>
+    <actionNode outgoing="/0/@activityEdge.7" incoming="/0/@activityEdge.6" name="1" action="Customer chooses to rent a bike " performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.8" incoming="/0/@activityEdge.2 /0/@activityEdge.5 /0/@activityEdge.7" name="2" action="System displays the bike code input screen" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.9" incoming="/0/@activityEdge.8" name="3" action="Customer enters the bike code that wants to rent" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.0" incoming="/0/@activityEdge.9" name="4" action="System checks the bike code " performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.10" incoming="/0/@activityEdge.15" name="5" action="System displays bike rental information " performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.11" incoming="/0/@activityEdge.10" name="6" action="Customer confirms bike rental " performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.12" incoming="/0/@activityEdge.11" name="7" action="System calls UC &quot;Payment&quot;" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.13" incoming="/0/@activityEdge.12" name="8" action="System activate bike unlock " performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.14" incoming="/0/@activityEdge.13" name="9" action="System activate the stopwatch " performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.2" incoming="/0/@activityEdge.1" name="4.1" action="System notifies the wrong bike code" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.5" incoming="/0/@activityEdge.4" name="4.2" action="System notifies bike rental " performedBy="/0/@activitypartition.1"/>
+    <finalNode incoming="/0/@activityEdge.14" name="End"/>
+    <initialNode outgoing="/0/@activityEdge.6" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.3" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="Customer entered wrong bike code"/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.4 /0/@activityEdge.15" incoming="/0/@activityEdge.3" name="D.2">
+      <predicate condition="Customer enters the bike code but the bikr is already rented"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC05LoginTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.8 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.0 /0/@actionNode.9 /2 /3 /4 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.8 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.1 /0/@actionNode.10 /5 /6 /7 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.8 /0/@finalNode"/>
+  </ControlFlowGraph>
+  <Action name="2" action="System displays the bike code input screen"/>
+  <Action name="3" action="Customer enters the bike code that wants to rent"/>
+  <Action name="4" action="System checks the bike code "/>
+  <Action name="2" action="System displays the bike code input screen"/>
+  <Action name="3" action="Customer enters the bike code that wants to rent"/>
+  <Action name="4" action="System checks the bike code "/>
+</xmi:XMI>
