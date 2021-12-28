@@ -1,0 +1,37 @@
+Test Case #1
+Start
+1.User asks access into the system
+2.System asks for username and password
+3.User introduces username and password
+4.System validates name and key
+5.System allows access and redirects user to the home screen
+End
+
+Test Case #2
+Start
+1.User asks access into the system
+2.System asks for username and password
+3.User introduces username and password
+4.System validates name and key
+D.1.If the user has not registered in the system
+4.1.System informs that the username has not been registered
+2.System asks for username and password
+3.User introduces username and password
+4.System validates name and key
+5.System allows access and redirects user to the home screen
+End
+
+Test Case #3
+Start
+1.User asks access into the system
+2.System asks for username and password
+3.User introduces username and password
+4.System validates name and key
+D.2.If the password does not match with username
+4.2.System informs that the password is wrong
+2.System asks for username and password
+3.User introduces username and password
+4.System validates name and key
+5.System allows access and redirects user to the home screen
+End
+

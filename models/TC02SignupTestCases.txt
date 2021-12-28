@@ -1,0 +1,23 @@
+Test Case #1
+Start
+1.Customer chooses the register function
+2.System displays the registration interface
+3.Customer enters personal information and submit registration
+4.System checks and validates account registration information
+5.System saves account information and announces successful registration
+End
+
+Test Case #2
+Start
+1.Customer chooses the register function
+2.System displays the registration interface
+3.Customer enters personal information and submit registration
+4.System checks and validates account registration information
+D.1.If system check and validates failed account registration information
+4.2.System informs error
+2.System displays the registration interface
+3.Customer enters personal information and submit registration
+4.System checks and validates account registration information
+5.System saves account information and announces successful registration
+End
+

@@ -1,0 +1,48 @@
+Test Case #1
+Start
+1.Admin opens a student account that needs to be deactivated
+2.System displays the student information screen
+3.Admin chooses the deactivate command
+4.System asks to enter the OTP code to confirm
+5.Admin enter the correct OTP code to confirm the deactivation order
+6.System checks the OTP code and conducts deactivation
+7.System displays a deactivated message.
+8.Use case ends
+End
+
+Test Case #2
+Start
+1.Admin opens a student account that needs to be deactivated
+2.System displays the student information screen
+3.Admin chooses the deactivate command
+4.System asks to enter the OTP code to confirm
+5.Admin enter the correct OTP code to confirm the deactivation order
+D.1.If admin enters wrong OTP code 
+5c1.System reported an error and canceled the student's order to deactive 
+4a.System displays the reCaptcha code and asks to enter the reCaptcha code to confirm
+5a.Admin enters the correct reCaptcha code to confirm the deactivation command
+6a.System checks the reCaptcha code and conducts deactivation
+7.System displays a deactivated message.
+8.Use case ends
+End
+
+Test Case #3
+Start
+1.Admin opens a student account that needs to be deactivated
+2.System displays the student information screen
+3.Admin chooses the deactivate command
+4.System asks to enter the OTP code to confirm
+D.2.If admin chooses another confirmation method: Confirm via reCaptcha
+4a.System displays the reCaptcha code and asks to enter the reCaptcha code to confirm
+5a.Admin enters the correct reCaptcha code to confirm the deactivation command
+6a.System checks the reCaptcha code and conducts deactivation
+7.System displays a deactivated message.
+8.Use case ends
+End
+
+Test Case #4
+D.3.If admin enters wrong reCaptcha code
+5b1.System reported an error and canceled the student's order to deactive.
+8.Use case ends
+End
+

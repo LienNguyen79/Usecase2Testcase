@@ -1,0 +1,37 @@
+Test Case #1
+Start
+1.System displays payment screen 
+2.Customer enters card information and confirms the transaction
+3.System asks the bank to process the transaction
+4.Bank processes the transaction
+5.System saves transaction and  notifies successful transaction 
+End
+
+Test Case #2
+Start
+1.System displays payment screen 
+2.Customer enters card information and confirms the transaction
+D.1.If customer entered incorrect card information
+3.1.System informs that the card information is incorrect
+1.System displays payment screen 
+2.Customer enters card information and confirms the transaction
+3.System asks the bank to process the transaction
+4.Bank processes the transaction
+5.System saves transaction and  notifies successful transaction 
+End
+
+Test Case #3
+Start
+1.System displays payment screen 
+2.Customer enters card information and confirms the transaction
+3.System asks the bank to process the transaction
+4.Bank processes the transaction
+D.2.If the customer's account balance is not enough
+4.1.System informs that the balance is not enough 
+1.System displays payment screen 
+2.Customer enters card information and confirms the transaction
+3.System asks the bank to process the transaction
+4.Bank processes the transaction
+5.System saves transaction and  notifies successful transaction 
+End
+

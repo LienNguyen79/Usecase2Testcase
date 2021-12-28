@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC04Payment"
+    description="User wants to access into the system">
+  <preConditions
+      condition="System calculated the total amount to be paid"/>
+  <postConditions
+      condition="User successfully pays for the order"/>
+  <actor name="System"/>
+  <actor name="Customer"/>
+  <actor name="Bank"/>
+  <mainFlow>
+    <mainstep
+        action="System displays payment screen "
+        stepID="1"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="Customer enters card information and confirms the transaction"
+        stepID="2"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System asks the bank to process the transaction"
+        stepID="3"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="Bank processes the transaction"
+        stepID="4"
+        performedBy="//@actor.2"/>
+    <mainstep
+        action="System saves transaction and  notifies successful transaction "
+        stepID="5"
+        performedBy="//@actor.0"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.0"
+      referenceStep="//@mainFlow/@mainstep.1">
+    <mainstep
+        action="System informs that the card information is incorrect"
+        stepID="3.1"
+        performedBy="//@actor.0"/>
+    <exceptionCondition
+        condition="If customer entered incorrect card information"/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.0"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System informs that the balance is not enough "
+        stepID="4.1"
+        performedBy="//@actor.0"/>
+    <exceptionCondition
+        condition="If the customer's account balance is not enough"/>
+  </alternativeflow>
+</FunctionalRequirement>

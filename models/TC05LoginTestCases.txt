@@ -1,0 +1,49 @@
+Test Case #1
+Start
+1.Customer chooses to rent a bike 
+2.System displays the bike code input screen
+3.Customer enters the bike code that wants to rent
+4.System checks the bike code 
+5.System displays bike rental information 
+6.Customer confirms bike rental 
+7.System calls UC "Payment"
+8.System activate bike unlock 
+9.System activate the stopwatch 
+End
+
+Test Case #2
+Start
+1.Customer chooses to rent a bike 
+2.System displays the bike code input screen
+3.Customer enters the bike code that wants to rent
+4.System checks the bike code 
+D.1.Customer entered wrong bike code
+4.1.System notifies the wrong bike code
+2.System displays the bike code input screen
+3.Customer enters the bike code that wants to rent
+4.System checks the bike code 
+5.System displays bike rental information 
+6.Customer confirms bike rental 
+7.System calls UC "Payment"
+8.System activate bike unlock 
+9.System activate the stopwatch 
+End
+
+Test Case #3
+Start
+1.Customer chooses to rent a bike 
+2.System displays the bike code input screen
+3.Customer enters the bike code that wants to rent
+4.System checks the bike code 
+D.2.Customer enters the bike code but the bikr is already rented
+4.2.System notifies bike rental 
+2.System displays the bike code input screen
+3.Customer enters the bike code that wants to rent
+4.System checks the bike code 
+5.System displays bike rental information 
+6.Customer confirms bike rental 
+7.System calls UC "Payment"
+8.System activate bike unlock 
+9.System activate the stopwatch 
+End
+

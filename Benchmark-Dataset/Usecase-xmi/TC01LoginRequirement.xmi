@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC01Login"
+    description="User wants to access into the system">
+  <postConditions
+      condition="System grants access to the user"/>
+  <actor name="User"/>
+  <actor name="System"/>
+  <mainFlow>
+    <mainstep
+        action="User asks access into the system"
+        stepID="1"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System asks for username and password"
+        stepID="2"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="User introduces username and password"
+        stepID="3"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System validates name and key"
+        stepID="4"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System allows access and redirects user to the home screen"
+        stepID="5"
+        performedBy="//@actor.1"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System informs that the username has not been registered"
+        stepID="4.1"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If the user has not registered in the system"/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System informs that the password is wrong"
+        stepID="4.2"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If the password does not match with username"/>
+  </alternativeflow>
+</FunctionalRequirement>

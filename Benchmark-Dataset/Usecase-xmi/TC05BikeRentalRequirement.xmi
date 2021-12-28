@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC05Login"
+    description="User wants to access into the system">
+  <preConditions
+      condition="Customer loginned in system "/>
+  <actor name="Customer"/>
+  <actor name="System"/>
+  <mainFlow>
+    <mainstep
+        action="Customer chooses to rent a bike "
+        stepID="1"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System displays the bike code input screen"
+        stepID="2"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Customer enters the bike code that wants to rent"
+        stepID="3"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System checks the bike code "
+        stepID="4"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System displays bike rental information "
+        stepID="5"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Customer confirms bike rental "
+        stepID="6"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System calls UC &quot;Payment&quot;"
+        stepID="7"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System activate bike unlock "
+        stepID="8"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System activate the stopwatch "
+        stepID="9"
+        performedBy="//@actor.1"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System notifies the wrong bike code"
+        stepID="4.1"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="Customer entered wrong bike code"/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System notifies bike rental "
+        stepID="4.2"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="Customer enters the bike code but the bikr is already rented"/>
+  </alternativeflow>
+</FunctionalRequirement>

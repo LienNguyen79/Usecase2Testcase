@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC03DeactivateStudent"
+    description="User wants to access into the system">
+  <preConditions
+      condition="Admin loginned in system "/>
+  <postConditions
+      condition="System deactivates the student account"/>
+  <actor name="Admin "/>
+  <actor name="System"/>
+  <mainFlow>
+    <mainstep
+        action="Admin opens a student account that needs to be deactivated"
+        stepID="1"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System displays the student information screen"
+        stepID="2"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Admin chooses the deactivate command"
+        stepID="3"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System asks to enter the OTP code to confirm"
+        stepID="4"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Admin enter the correct OTP code to confirm the deactivation order"
+        stepID="5"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System checks the OTP code and conducts deactivation"
+        stepID="6"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System displays a deactivated message."
+        stepID="7"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Use case ends"
+        stepID="8"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.7"
+      referenceStep="//@mainFlow/@mainstep.4">
+    <mainstep
+        action="System reported an error and canceled the student's order to deactive "
+        stepID="5c1"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If admin enters wrong OTP code "/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.6"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System displays the reCaptcha code and asks to enter the reCaptcha code to confirm"
+        stepID="4a"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Admin enters the correct reCaptcha code to confirm the deactivation command"
+        stepID="5a"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System checks the reCaptcha code and conducts deactivation"
+        stepID="6a"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If admin chooses another confirmation method: Confirm via reCaptcha"/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.7"
+      referenceStep="//@alternativeflow.1/@mainstep.1">
+    <mainstep
+        action="System reported an error and canceled the student's order to deactive."
+        stepID="5b1"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If admin enters wrong reCaptcha code"/>
+  </alternativeflow>
+</FunctionalRequirement>
