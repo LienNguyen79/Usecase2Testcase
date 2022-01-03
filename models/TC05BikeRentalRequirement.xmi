@@ -5,7 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://omg.org/spec/UML/usecase"
     xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
-    name="TC05Login"
+    name="TC05BikeRental"
     description="User wants to access into the system">
   <preConditions
       condition="Customer loginned in system "/>
@@ -67,6 +67,6 @@
         stepID="4.2"
         performedBy="//@actor.1"/>
     <exceptionCondition
-        condition="Customer enters the bike code but the bikr is already rented"/>
+        condition="Customer enters the bike code but the bike is already rented"/>
   </alternativeflow>
 </FunctionalRequirement>

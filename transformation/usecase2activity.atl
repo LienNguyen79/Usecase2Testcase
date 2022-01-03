@@ -1,9 +1,9 @@
 -- @path UseCaseMM=/Usecase2Testcase/metamodels/Usecase_Metamodel.ecore
 -- @path ActivityMM=/Usecase2Testcase/metamodels/Activity_MetaModel.ecore
---khai b�o t�n module 
+--khai báo tên module 
 module usecase2activity;
 create OUT : ActivityMM from IN : UseCaseMM;
-
+--helper giống các method trong java
 helper def: decisionNodeID : Integer = 0;
 
 helper def: currentEdge : ActivityMM!ActivityEdge = OclUndefined;
@@ -266,7 +266,8 @@ rule UCActionStep2ADAction {
 		thisModule.currentNode <- actionNode;
 	}
 }
-
+--các rule cấu trúc to...do (không có from): nên không match với thành phần của siêu mô hình nguồn nào mà 
+--dựa trên sự kết hợp của các biến cục bộ, tham số và thuộc tính mô-đun
 rule createEdgeFromActivityNode(sourceNode: ActivityMM!ActivityNode, targetNode: ActivityMM!ActivityNode){
 	to
 		edge: ActivityMM!ActivityEdge(
@@ -282,8 +283,10 @@ rule createEdgeFromActivityNode(sourceNode: ActivityMM!ActivityNode, targetNode:
 
 rule UCAlternativeFlow2ADDecisionNode {
 	from
+	-- tương ứng với 1 thực thể của siêu mô hình nguồn
 		ucAltFlow: UseCaseMM!AlternativeFlow
 	to
+	--thành phần được sinh ra từ thành phần nguồn và cách khởi tạo các phần tử được sinh ra 
 		adDecisionNode: ActivityMM!DecisionNode (
 			predicate <- ucAltFlow.exceptionCondition
 		)
