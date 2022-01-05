@@ -1,0 +1,50 @@
+Use case tạo khóa học 
+Tác nhân: Giảng viên, hệ thống 
+
+Basic flow 
+1. Giảng viên Nhấn nút tạo khoá học
+2.Hệ thống Hiển thị form nhập tên khoá học và chọn loại khoá học
+3. Giảng viên Nhập tên và chọn loại khoá học
+4. Hệ thống Lưu lại khoá học và hiển thị trang soạn nội dung khoá
+học
+5.Giảng viên Soạn thảo khoá học
+6.Hệ thống Lưu lại khoá học
+7. Hệ thống Thông báo trạng thái lưu
+
+Alternative flow 
+
+5.a Giảng viên Chỉnh sửa mô tả khoá học
+5.a.1Giảng v iên Dán ảnh vào trình soạn thảo
+5.a.2Hệ thống Lưu ảnh vào server lưu trữ
+5.a.3Hệ thống Lấy URL ảnh đã lưu, gán vào ảnh trong trình soạn
+thảo
+5.b Giảng viên Chỉnh sửa thời gian khoá học
+5.c Giảng viên Thêm chương học
+6.c Giảng viên Chỉnh sửa tên chương học
+5.d Giảng viên Cài đặt chương học
+5.d.1Giảng viên Cài đặt thời gian dự kiến của chương học
+5.d.2Giảng viên Cài đặt thời gian làm bài kiểm tra, giới hạn thời giạn 2
+lần làm bài kiểm tra, điểm qua bài kiểm tra
+5.e Giảng viên Thêm bài học
+6.e Giảng viên Chỉnh sửa nội dung bài học
+7.e Giảng viên Thực hiện luồng hoạt động sự kiện thay thế 5.a.1
+8.e Giảng viên Thêm video bài học nếu là khoá học thông thường
+9.e Hệ thống Lưu video lên server lưu trữ, tạo tài nguyên và gán
+URL video vào bài học
+8.e.1Giảng viên Cài đặt thời gian học bài học đối với khoá học trực
+tuyến
+5.f Giảng viên Thêm câu hỏi
+6.f Giảng viên Soạn nội dung câu hỏi
+7.f Giảng viên Thực hiện luồng hoạt động sự kiện thay thế 5.a.1
+5.g Giảng viên Thêm câu trả lời
+6.g Giảng viên Đánh dấu câu trả lời đúng
+7.g Giảng viên Soạn nội dung câu trả lời
+8.g Giảng viên Thực hiện luồng hoạt động sự kiện thay thế 5.a.1
+5.h Giảng viên Chỉnh sửa topic của khoá học
+5.i Giảng viên Chỉnh sửa giá của khoá học
+5.j Giảng viên Xoá câu trả lời
+5.k Giảng viên Xoá câu hỏi
+5.l Giảng viên Xoá bài học
+42
+5.m Giảng viên Xoá bài học trực tuyến
+5.n Giảng viên Xoá chương học

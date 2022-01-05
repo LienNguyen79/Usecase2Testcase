@@ -1,0 +1,22 @@
+Use case Thêm hóa đơn thuê phòng trọ
+
+Tác nhân: Hệ thống, chủ nhà trọ
+Tiền điều kiện: Người dùng đã đăng nhập hệ thống với vai trò chủ nhà trọ
+
+Basic flow:
+1. Chủ nhà trọ Chọn chức năng “Quản lý hóa đơn”
+2. Hệ thống hiển thị danh sách phòng chưa lập hóa đơn 
+3. Chủ nhà trọ Chọn phòng cần lập hóa đơn
+4. Hệ thống hiển thị thông tin phòng
+5. Chủ nhà trọ Chọn chức năng “Tạo hóa đơn”
+6. Hệ thống Hiển thị giao diện Lập hóa đơn
+7. Chủ nhà trọ Nhập thông tin trên form Lập hóa đơn
+8. Chủ nhà trọ Yêu cầu Lập hóa đơn
+9. Hệ thống Kiểm tra dữ liệu chủ nhà trọ nhập trên form
+10. Hệ thống Thông báo Lập hóa đơn thành công
+
+Exception flow
+Nếu dữ liệu nhập trên form không hợp lệ
+9a. Hệ thống Thông báo lỗi: dữ liệu không hợp lệ, yêu cầu
+nhập lại
+Use case quay lại bước 6

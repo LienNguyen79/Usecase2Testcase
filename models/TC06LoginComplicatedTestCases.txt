@@ -1,0 +1,75 @@
+Test Case #1
+Start
+1.User accesses Medium application
+2.System asks for login information
+3.User enters Medium account and selects login command
+4.System validates the login information 
+5.System allows access and records successful logging in Activity Log.
+End
+
+Test Case #2
+Start
+1.User accesses Medium application
+2.System asks for login information
+D.1.If user chooses a login method a Gmail account
+2a1.System switches to the Google login screen
+3a.User enters Google account and selects login command
+4a.Google validates login information
+5.System allows access and records successful logging in Activity Log.
+End
+
+Test Case #3
+Start
+1.User accesses Medium application
+2.System asks for login information
+D.2.User chooses login method with Facebook account
+2b1.System switches to Facebook's login screen
+3b.User enters Facebook account and selects login command
+4b. Facebook validates login information
+5.System allows access and records successful logging in Activity Log.
+End
+
+Test Case #4
+Start
+1.User accesses Medium application
+2.System asks for login information
+3.User enters Medium account and selects login command
+4.System validates the login information 
+D.3.If system validates the login failed 
+4.1.System displays a message 
+2.System asks for login information
+3.User enters Medium account and selects login command
+4.System validates the login information 
+5.System allows access and records successful logging in Activity Log.
+End
+
+Test Case #5
+Start
+1.User accesses Medium application
+2.System asks for login information
+3.User enters Medium account and selects login command
+4.System validates the login information 
+5.System allows access and records successful logging in Activity Log.
+D.4.If Google validates the login failed
+4a.1.System displays a message
+2.System asks for login information
+3.User enters Medium account and selects login command
+4.System validates the login information 
+5.System allows access and records successful logging in Activity Log.
+End
+
+Test Case #6
+Start
+1.User accesses Medium application
+2.System asks for login information
+3.User enters Medium account and selects login command
+4.System validates the login information 
+5.System allows access and records successful logging in Activity Log.
+D.5.If Facebook validates the login failed
+4b.1.System displays a message 
+2.System asks for login information
+3.User enters Medium account and selects login command
+4.System validates the login information 
+5.System allows access and records successful logging in Activity Log.
+End
+

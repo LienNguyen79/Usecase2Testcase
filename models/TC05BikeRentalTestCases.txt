@@ -35,7 +35,7 @@ Start
 2.System displays the bike code input screen
 3.Customer enters the bike code that wants to rent
 4.System checks the bike code 
-D.2.Customer enters the bike code but the bikr is already rented
+D.2.Customer enters the bike code but the bike is already rented
 4.2.System notifies bike rental 
 2.System displays the bike code input screen
 3.Customer enters the bike code that wants to rent

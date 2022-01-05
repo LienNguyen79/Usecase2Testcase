@@ -1,0 +1,23 @@
+Use case tìm kiếm sản phẩn:
+
+Objective: Người dùng tìm kiếm sản phẩm mình quan tâm
+Tác nhân: Người dùng, hệ thống
+Tiền điều kiện: Thiết bị của người dùng đã được kết nối Internet
+- Người dùng đang ở trang chủ của trang web
+Hậu điều kiện: 
+
+Basic flow:
+1. Hệ thống hiển thị trang web
+2. Người dùng nhập điều kiện tìm kiếm vào ô tìm kiếm và chọn submit
+3. Hệ thống tìm kiếm và đưa ra danh sách các sản phẩm thỏa mãn điều
+kiện tìm kiếm
+4. Người dùng có thể sắp xếp danh sách theo tên hoặc giá
+sản phẩm 
+
+Exception flow:
+Nếu Người dùng nhập sai điều kiện tìm kiếm mà submit
+form (không chọn khoảng giá và không nhập tên)
+3a. Hệ thống hiển thị thông báo nhập thiếu điều kiện
+
+Nếu hệ thống không tìm thấy sản phẩm nào thỏa mãn điều kiện tìm kiếm
+3b. Hệ thống hiển thị thông báo không tìm thấy sản phẩm thỏa mãn

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC09AddRoomRentalBill"
+    description="User wants to access into the system">
+  <preConditions
+      condition="User logged in as Landlord"/>
+  <actor name="Landlord"/>
+  <actor name="System"/>
+  <mainFlow>
+    <mainstep
+        action="Landlord selects &quot;Invoice Management&quot; function"
+        stepID="1"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System displays a list of unbilled rooms"
+        stepID="2"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Landlord selects the room to be billed"
+        stepID="3"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System displays room information"
+        stepID="4"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Landlord selects the function “Create Invoice”"
+        stepID="5"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System displays the Invoicing interface"
+        stepID="6"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Landlord enters information on the Invoice form"
+        stepID="7"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="Landlord requests to create invoice"
+        stepID="8"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System checks the data entered"
+        stepID="9"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System notifies invoice successfully "
+        stepID="10"
+        performedBy="//@actor.1"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.5"
+      referenceStep="//@mainFlow/@mainstep.8">
+    <mainstep
+        action="System Error message: invalid data, request retype"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If the data entered on the form is not valid"/>
+  </alternativeflow>
+</FunctionalRequirement>

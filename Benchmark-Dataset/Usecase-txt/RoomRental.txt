@@ -1,0 +1,16 @@
+Use case thuê phòng trọ
+
+Tác nhân: Người thuê nhà, Hệ thống, Chủ nhà trọ
+Tiền điều kiện: Người dùng đã đăng nhập với vai trò là Người thuê nhà 
+
+Basic flow: 
+1.Người thuê nhà Xem thông tin chi tiết bài đăng
+2. Người thuê nhà Chọn chức năng Thuê ngay
+3. Hệ thống Gửi yêu cầu thuê nhà đến chủ nhà trọ
+4. Chủ nhà trọ Xem thông tin yêu cầu thuê nhà
+5. Chủ nhà trọ Chấp nhận yêu cầu thuê nhà
+6. Hệ thống Hiển thị phòng trọ vừa thuê trong menu “phòng
+trọ của tôi” của người thuê nhà
+
+Exception flow
+5a. Chủ nhà trọ Hủy bỏ yêu cầu thuê nhà

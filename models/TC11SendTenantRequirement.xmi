@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC11SendTenant"
+    description="User wants to access into the system">
+  <preConditions
+      condition="User logged in as Tenant"/>
+  <actor name="Tenant"/>
+  <actor name="Landlord"/>
+  <actor name="System"/>
+  <mainFlow>
+    <mainstep
+        action="Tenant views post details"
+        stepID="1"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="Tenant chooses rent Now"
+        stepID="2"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System sends a rental request to landlord"
+        stepID="3"
+        performedBy="//@actor.2"/>
+    <mainstep
+        action="Landlord views rental request information"
+        stepID="4"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="Landlord accepts rental request"
+        stepID="5"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System displays the rented room in the &quot;my room&quot; menu of the tenant"
+        stepID="6"
+        performedBy="//@actor.2"/>
+    <mainstep
+        action="Use case ends"
+        stepID="7"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.6"
+      referenceStep="//@mainFlow/@mainstep.4">
+    <exceptionCondition
+        condition="If landlord cancels rental request"/>
+  </alternativeflow>
+</FunctionalRequirement>

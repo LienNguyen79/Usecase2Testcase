@@ -1,0 +1,25 @@
+Use case Thêm bài đăng
+
+Tác nhân: Hệ thống, chủ nhà trọ
+Tiên điều kiện: Người dùng đã đăng nhập hệ thống với vai trò là chủ nhà trọ
+
+Basic flow:
+1. Chủ nhà trọ Chọn chức năng Quản lí bài đăng
+2. Hệ thống hiển thị danh sách bài đăng
+3. Chủ nhà trọ Chọn chức năng Thêm bài đăng
+4. Hệ thống Hiển thị màn hình Thông tin bài đăng
+5. Chủ nhà trọ Nhập thông tin trên form “Thông tin bài đăng”
+6. Chủ nhà trọ Yêu cầu thêm bài đăng
+7. Hệ thống verify dữ liệu và Gửi yêu cầu tới admin
+8. Admin Phê duyệt bài đăng
+9. Hệ thống Hiển thị bài đăng trên trang chủ
+10. use case kết thúc 
+Exception flow
+7a. Hệ thống Thông báo lỗi: dữ liệu không hợp lệ, yêu cầu
+nhập lại. 
+Use case quay lại bước 4
+
+
+8a. Admin Hủy bỏ yêu cầu đăng bài
+9a. Hệ thống gửi thông báo bài đăng bị hủy bỏ cho chủ nhà trọ
+Use case dừng lại
