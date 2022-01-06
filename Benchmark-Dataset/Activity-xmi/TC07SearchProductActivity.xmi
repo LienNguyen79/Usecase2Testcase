@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC07SearchProduct" description="User wants to access into the system">
+    <activitypartition name="User"/>
+    <activitypartition name="System"/>
+    <preCondition condition="User's device is connected to the Internet"/>
+    <preCondition condition="The user is on the homepage of the site"/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@decisionNode.0" edgeName="4-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.4" edgeName="D.1-3a"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@actionNode.1" edgeName="3a-2"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@decisionNode.1" edgeName="D.1-D.2"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.5" edgeName="D.2-3b"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.1" edgeName="3b-2"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@actionNode.2" edgeName="2-3"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.4" edgeName="D.2-3a"/>
+    <actionNode outgoing="/0/@activityEdge.7" incoming="/0/@activityEdge.6" name="1" action="System displays website " performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.8" incoming="/0/@activityEdge.2 /0/@activityEdge.5 /0/@activityEdge.7" name="2" action="User enters search terms in the search box and selects submit" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.9" incoming="/0/@activityEdge.8" name="3" action="System searches and gives a list of products that satisfy the criteria" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.0" incoming="/0/@activityEdge.9" name="4" action="User can sort the list by name or price" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.2" incoming="/0/@activityEdge.1 /0/@activityEdge.10" name="3a" action="System displays a message of conditional input" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.5" incoming="/0/@activityEdge.4" name="3b" action="System displays a message that no satisfied products were found" performedBy="/0/@activitypartition.1"/>
+    <finalNode name="End"/>
+    <initialNode outgoing="/0/@activityEdge.6" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.3" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="If user enters the wrong search condition and submits form (do not select a price range and do not enter a name)"/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.4 /0/@activityEdge.10" incoming="/0/@activityEdge.3" name="D.2">
+      <predicate condition="If system does not find any products that match the search criteria"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC07SearchProductTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.0 /0/@actionNode.4 /2 /3 /4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.1 /0/@actionNode.5 /5 /6 /7 /0/@finalNode"/>
+  </ControlFlowGraph>
+  <Action name="2" action="User enters search terms in the search box and selects submit"/>
+  <Action name="3" action="System searches and gives a list of products that satisfy the criteria"/>
+  <Action name="4" action="User can sort the list by name or price"/>
+  <Action name="2" action="User enters search terms in the search box and selects submit"/>
+  <Action name="3" action="System searches and gives a list of products that satisfy the criteria"/>
+  <Action name="4" action="User can sort the list by name or price"/>
+</xmi:XMI>

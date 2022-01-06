@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC11SendTenant" description="User wants to access into the system">
+    <activitypartition name="Tenant"/>
+    <activitypartition name="Landlord (who wants to send)"/>
+    <activitypartition name="Landlord (requested person)"/>
+    <activitypartition name="System"/>
+    <preCondition condition="User logged in as landlord and had tenant in the list of tenants"/>
+    <activityEdge sourceNode="/0/@actionNode.8" targetNode="/0/@decisionNode.0" edgeName="9-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.14" edgeName="D.1-9a"/>
+    <activityEdge sourceNode="/0/@actionNode.14" targetNode="/0/@actionNode.5" edgeName="9a-6"/>
+    <activityEdge sourceNode="/0/@actionNode.9" targetNode="/0/@decisionNode.1" edgeName="10-D.2"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.15" edgeName="D.2-11b"/>
+    <activityEdge sourceNode="/0/@actionNode.15" targetNode="/0/@actionNode.13" edgeName="11b-14"/>
+    <activityEdge sourceNode="/0/@actionNode.11" targetNode="/0/@decisionNode.2" edgeName="12-D.3"/>
+    <activityEdge sourceNode="/0/@decisionNode.2" targetNode="/0/@actionNode.16" edgeName="D.3-13c"/>
+    <activityEdge sourceNode="/0/@actionNode.16" targetNode="/0/@actionNode.13" edgeName="13c-14"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@actionNode.2" edgeName="2-3"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@actionNode.4" edgeName="4-5"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@actionNode.5" edgeName="5-6"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.6" edgeName="6-7"/>
+    <activityEdge sourceNode="/0/@actionNode.6" targetNode="/0/@actionNode.7" edgeName="7-8"/>
+    <activityEdge sourceNode="/0/@actionNode.7" targetNode="/0/@actionNode.8" edgeName="8-9"/>
+    <activityEdge sourceNode="/0/@actionNode.10" targetNode="/0/@actionNode.11" edgeName="11-12"/>
+    <activityEdge sourceNode="/0/@actionNode.12" targetNode="/0/@actionNode.13" edgeName="13-14"/>
+    <activityEdge sourceNode="/0/@actionNode.13" targetNode="/0/@finalNode" edgeName="14-End"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.9" edgeName="D.1-10"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.10" edgeName="D.2-11"/>
+    <activityEdge sourceNode="/0/@decisionNode.2" targetNode="/0/@actionNode.12" edgeName="D.3-13"/>
+    <actionNode outgoing="/0/@activityEdge.10" incoming="/0/@activityEdge.9" name="1" action="Landlord (who  wants to send) selects room management function" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.11" incoming="/0/@activityEdge.10" name="2" action="System displays the list of the landlord's rooms" performedBy="/0/@activitypartition.3"/>
+    <actionNode outgoing="/0/@activityEdge.12" incoming="/0/@activityEdge.11" name="3" action="Landlord (who wants to send) selects view tenant information function" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.13" incoming="/0/@activityEdge.12" name="4" action="System displays tenant information " performedBy="/0/@activitypartition.3"/>
+    <actionNode outgoing="/0/@activityEdge.14" incoming="/0/@activityEdge.13" name="5" action="Landlord (who wants to send) selects &quot;send tenant function&quot;" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.15" incoming="/0/@activityEdge.2 /0/@activityEdge.14" name="6" action="System displays &quot;request to  send tenant screen&quot;" performedBy="/0/@activitypartition.3"/>
+    <actionNode outgoing="/0/@activityEdge.16" incoming="/0/@activityEdge.15" name="7" action="Landlard (who wants to send) enters information on form &quot;request to send tenant&quot;" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.17" incoming="/0/@activityEdge.16" name="8" action="Landlord (who wants to send) requests to send tenant" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.0" incoming="/0/@activityEdge.17" name="9" action="System checks information and sends request to send tenant" performedBy="/0/@activitypartition.3"/>
+    <actionNode outgoing="/0/@activityEdge.3" incoming="/0/@activityEdge.21" name="10" action="Tenant accepts request to send tenant" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.18" incoming="/0/@activityEdge.22" name="11" action="System sends request to landlord (requested person)" performedBy="/0/@activitypartition.3"/>
+    <actionNode outgoing="/0/@activityEdge.6" incoming="/0/@activityEdge.18" name="12" action="Landlord (requested person) accepts request to send tenant " performedBy="/0/@activitypartition.2"/>
+    <actionNode outgoing="/0/@activityEdge.19" incoming="/0/@activityEdge.23" name="13" action="System updates &quot;Being sent&quot; status for tenant who has just been sent" performedBy="/0/@activitypartition.3"/>
+    <actionNode outgoing="/0/@activityEdge.20" incoming="/0/@activityEdge.5 /0/@activityEdge.8 /0/@activityEdge.19" name="14" action="Use case ends"/>
+    <actionNode outgoing="/0/@activityEdge.2" incoming="/0/@activityEdge.1" name="9a" action="System Error message: invalid data, request retype" performedBy="/0/@activitypartition.3"/>
+    <actionNode outgoing="/0/@activityEdge.5" incoming="/0/@activityEdge.4" name="11b" action="System notifies to landlord (who  wants to send)" performedBy="/0/@activitypartition.3"/>
+    <actionNode outgoing="/0/@activityEdge.8" incoming="/0/@activityEdge.7" name="13c" action="System notifies to landlord (who wants to send) and tenant " performedBy="/0/@activitypartition.3"/>
+    <finalNode incoming="/0/@activityEdge.20" name="End"/>
+    <initialNode outgoing="/0/@activityEdge.9" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.21" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="If system checks data unsuccessfully "/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.4 /0/@activityEdge.22" incoming="/0/@activityEdge.3" name="D.2">
+      <predicate condition="If tenant cancels request to send tenant "/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.7 /0/@activityEdge.23" incoming="/0/@activityEdge.6" name="D.3">
+      <predicate condition="If landlord (requestet person) cancels request to send tenant"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC11SendTenantTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.8 /0/@actionNode.9 /0/@actionNode.10 /0/@actionNode.11 /0/@actionNode.12 /0/@actionNode.13 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.8 /0/@decisionNode.0 /0/@actionNode.14 /2 /3 /4 /5 /0/@actionNode.9 /0/@actionNode.10 /0/@actionNode.11 /0/@actionNode.12 /0/@actionNode.13 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.8 /0/@actionNode.9 /0/@decisionNode.1 /0/@actionNode.15 /0/@actionNode.13 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.8 /0/@actionNode.9 /0/@actionNode.10 /0/@actionNode.11 /0/@decisionNode.2 /0/@actionNode.16 /0/@actionNode.13 /0/@finalNode"/>
+  </ControlFlowGraph>
+  <Action name="6" action="System displays &quot;request to  send tenant screen&quot;"/>
+  <Action name="7" action="Landlard (who wants to send) enters information on form &quot;request to send tenant&quot;"/>
+  <Action name="8" action="Landlord (who wants to send) requests to send tenant"/>
+  <Action name="9" action="System checks information and sends request to send tenant"/>
+</xmi:XMI>

@@ -1,0 +1,34 @@
+Test Case #1
+Start
+1.Landlord selects "Invoice Management" function
+2.System displays a list of unbilled rooms
+3.Landlord selects the room to be billed
+4.System displays room information
+5.Landlord selects the function “Create Invoice”
+6.System displays the Invoicing interface
+7.Landlord enters information on the Invoice form
+8.Landlord requests to create invoice
+9.System checks the data entered
+10.System notifies invoice successfully 
+End
+
+Test Case #2
+Start
+1.Landlord selects "Invoice Management" function
+2.System displays a list of unbilled rooms
+3.Landlord selects the room to be billed
+4.System displays room information
+5.Landlord selects the function “Create Invoice”
+6.System displays the Invoicing interface
+7.Landlord enters information on the Invoice form
+8.Landlord requests to create invoice
+9.System checks the data entered
+D.1.If the data entered on the form is not valid
+10a.System Error message: invalid data, request retype
+6.System displays the Invoicing interface
+7.Landlord enters information on the Invoice form
+8.Landlord requests to create invoice
+9.System checks the data entered
+10.System notifies invoice successfully 
+End
+

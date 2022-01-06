@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC07SearchProduct"
+    description="User wants to access into the system">
+  <preConditions
+      condition="User's device is connected to the Internet"/>
+  <preConditions
+      condition="The user is on the homepage of the site"/>
+  <actor name="User"/>
+  <actor name="System"/>
+  <mainFlow>
+    <mainstep
+        action="System displays website "
+        stepID="1"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="User enters search terms in the search box and selects submit"
+        stepID="2"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System searches and gives a list of products that satisfy the criteria"
+        stepID="3"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="User can sort the list by name or price"
+        stepID="4"
+        performedBy="//@actor.0"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System displays a message of conditional input"
+        stepID="3a"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If user enters the wrong search condition and submits form (do not select a price range and do not enter a name)"/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System displays a message that no satisfied products were found"
+        stepID="3b"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If system does not find any products that match the search criteria"/>
+  </alternativeflow>
+</FunctionalRequirement>

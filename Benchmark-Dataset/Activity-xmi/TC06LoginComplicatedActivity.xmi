@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC06LoginComplicated" description="User wants to access into the system">
+    <activitypartition name="User"/>
+    <activitypartition name="System"/>
+    <activitypartition name="Google"/>
+    <activitypartition name="Facebook"/>
+    <postCondition condition="System grants access to the user"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@decisionNode.0" edgeName="2-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.5" edgeName="D.1-2a1"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.6" edgeName="2a1-3a"/>
+    <activityEdge sourceNode="/0/@actionNode.6" targetNode="/0/@actionNode.7" edgeName="3a-4a"/>
+    <activityEdge sourceNode="/0/@actionNode.7" targetNode="/0/@actionNode.4" edgeName="4a-5"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@decisionNode.1" edgeName="D.1-D.2"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.8" edgeName="D.2-2b1"/>
+    <activityEdge sourceNode="/0/@actionNode.8" targetNode="/0/@actionNode.9" edgeName="2b1-3b"/>
+    <activityEdge sourceNode="/0/@actionNode.9" targetNode="/0/@actionNode.10" edgeName="3b-4b"/>
+    <activityEdge sourceNode="/0/@actionNode.10" targetNode="/0/@actionNode.4" edgeName="4b-5"/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@decisionNode.2" edgeName="4-D.3"/>
+    <activityEdge sourceNode="/0/@decisionNode.2" targetNode="/0/@actionNode.11" edgeName="D.3-4.1"/>
+    <activityEdge sourceNode="/0/@actionNode.11" targetNode="/0/@actionNode.1" edgeName="4.1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@decisionNode.3" edgeName="5-D.4"/>
+    <activityEdge sourceNode="/0/@decisionNode.3" targetNode="/0/@actionNode.12" edgeName="D.4-4a.1"/>
+    <activityEdge sourceNode="/0/@actionNode.12" targetNode="/0/@actionNode.1" edgeName="4a.1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@decisionNode.4" edgeName="5-D.5"/>
+    <activityEdge sourceNode="/0/@decisionNode.4" targetNode="/0/@actionNode.13" edgeName="D.5-4b.1"/>
+    <activityEdge sourceNode="/0/@actionNode.13" targetNode="/0/@actionNode.1" edgeName="4b.1-2"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@actionNode.5" edgeName="5-2a1"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.6" edgeName="2a1-3a"/>
+    <activityEdge sourceNode="/0/@actionNode.6" targetNode="/0/@actionNode.7" edgeName="3a-4a"/>
+    <activityEdge sourceNode="/0/@actionNode.8" targetNode="/0/@actionNode.9" edgeName="2b1-3b"/>
+    <activityEdge sourceNode="/0/@actionNode.9" targetNode="/0/@actionNode.10" edgeName="3b-4b"/>
+    <activityEdge sourceNode="/0/@decisionNode.1" targetNode="/0/@actionNode.2" edgeName="D.2-3"/>
+    <activityEdge sourceNode="/0/@decisionNode.2" targetNode="/0/@actionNode.4" edgeName="D.3-5"/>
+    <activityEdge sourceNode="/0/@decisionNode.3" targetNode="/0/@actionNode.8" edgeName="D.4-2b1"/>
+    <activityEdge sourceNode="/0/@decisionNode.4" targetNode="/0/@actionNode.11" edgeName="D.5-4.1"/>
+    <actionNode outgoing="/0/@activityEdge.20" incoming="/0/@activityEdge.19" name="1" action="User accesses Medium application" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.0" incoming="/0/@activityEdge.12 /0/@activityEdge.15 /0/@activityEdge.18 /0/@activityEdge.20" name="2" action="System asks for login information" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.21" incoming="/0/@activityEdge.27" name="3" action="User enters Medium account and selects login command" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.10" incoming="/0/@activityEdge.21" name="4" action="System validates the login information " performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.22 /0/@activityEdge.13 /0/@activityEdge.16" incoming="/0/@activityEdge.4 /0/@activityEdge.9 /0/@activityEdge.28" name="5" action="System allows access and records successful logging in Activity Log." performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.2 /0/@activityEdge.23" incoming="/0/@activityEdge.1 /0/@activityEdge.22" name="2a1" action="System switches to the Google login screen" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.3 /0/@activityEdge.24" incoming="/0/@activityEdge.2 /0/@activityEdge.23" name="3a" action="User enters Google account and selects login command" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.4" incoming="/0/@activityEdge.3 /0/@activityEdge.24" name="4a" action="Google validates login information" performedBy="/0/@activitypartition.2"/>
+    <actionNode outgoing="/0/@activityEdge.7 /0/@activityEdge.25" incoming="/0/@activityEdge.6 /0/@activityEdge.29" name="2b1" action="System switches to Facebook's login screen" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.8 /0/@activityEdge.26" incoming="/0/@activityEdge.7 /0/@activityEdge.25" name="3b" action="User enters Facebook account and selects login command" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.9" incoming="/0/@activityEdge.8 /0/@activityEdge.26" name="4b" action=" Facebook validates login information" performedBy="/0/@activitypartition.3"/>
+    <actionNode outgoing="/0/@activityEdge.12" incoming="/0/@activityEdge.11 /0/@activityEdge.30" name="4.1" action="System displays a message " performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.15" incoming="/0/@activityEdge.14" name="4a.1" action="System displays a message" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.18" incoming="/0/@activityEdge.17" name="4b.1" action="System displays a message " performedBy="/0/@activitypartition.1"/>
+    <finalNode name="End"/>
+    <initialNode outgoing="/0/@activityEdge.19" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.5" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="If user chooses a login method a Gmail account"/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.6 /0/@activityEdge.27" incoming="/0/@activityEdge.5" name="D.2">
+      <predicate condition="User chooses login method with Facebook account"/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.11 /0/@activityEdge.28" incoming="/0/@activityEdge.10" name="D.3">
+      <predicate condition="If system validates the login failed "/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.14 /0/@activityEdge.29" incoming="/0/@activityEdge.13" name="D.4">
+      <predicate condition="If Google validates the login failed"/>
+    </decisionNode>
+    <decisionNode outgoing="/0/@activityEdge.17 /0/@activityEdge.30" incoming="/0/@activityEdge.16" name="D.5">
+      <predicate condition="If Facebook validates the login failed"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC06LoginComplicatedTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@decisionNode.0 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@decisionNode.1 /0/@actionNode.8 /0/@actionNode.9 /0/@actionNode.10 /0/@actionNode.4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@decisionNode.2 /0/@actionNode.11 /2 /3 /4 /0/@actionNode.4 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@decisionNode.3 /0/@actionNode.12 /5 /6 /7 /8 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@decisionNode.4 /0/@actionNode.13 /9 /10 /11 /12 /0/@finalNode"/>
+  </ControlFlowGraph>
+  <Action name="2" action="System asks for login information"/>
+  <Action name="3" action="User enters Medium account and selects login command"/>
+  <Action name="4" action="System validates the login information "/>
+  <Action name="2" action="System asks for login information"/>
+  <Action name="3" action="User enters Medium account and selects login command"/>
+  <Action name="4" action="System validates the login information "/>
+  <Action name="5" action="System allows access and records successful logging in Activity Log."/>
+  <Action name="2" action="System asks for login information"/>
+  <Action name="3" action="User enters Medium account and selects login command"/>
+  <Action name="4" action="System validates the login information "/>
+  <Action name="5" action="System allows access and records successful logging in Activity Log."/>
+</xmi:XMI>

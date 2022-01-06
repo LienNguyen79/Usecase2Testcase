@@ -5,20 +5,31 @@ Tiền điều kiện: Người dùng đã đăng nhập với vai trò là ch�
 trong danh sách người thuê nhà 
 
 Basic flow: 
-1.Chủ nhà trọ(người muốn gửi) Chọn chức năng Quản lí phòng trọ
-2.Chủ nhà trọ (người muốn gửi Chọn chức năng Xem thông tin người thuê
-3.Chủ nhà trọ (người muốn gửi) Chọn chức năng “Gửi khách trọ”
-4. Hệ thống Hiển thị màn hình Yêu cầu gửi khách trọ
-5.Chủ nhà trọ (người muốn gửi) Nhập thông tin trên form “Yêu cầu gửi khách trọ”
-6.Chủ nhà trọ (người muốn gửi) Yêu cầu gửi người thuê nhà
-7. Hệ thống Gửi yêu cầu tới người thuê nhà
-8. Người thuê nhà Chấp nhận yêu cầu gửi khách trọ
-9. Hệ thống Gửi yêu cầu đến chủ trọ được nhờ
-10. Chủ nhà trọ (người được nhờ) Chấp nhận yêu cầu gửi khách trọ
-11. Hệ thống Cập nhật tình trạng thái “Đang được gửi” với người thuê nhà vừa được gửi
- 
+1.Chủ nhà trọ (người muốn gửi) Chọn chức năng Quản lí phòng trọ
+2. Hệ thống hiển thị danh sách phòng trọ của chủ trọ
+3.Chủ nhà trọ (người muốn gửi) Chọn chức năng Xem thông tin người thuê
+4. Hệ thống hiển thị thông tin người thuê phòng
+5.Chủ nhà trọ (người muốn gửi) Chọn chức năng “Gửi khách trọ”
+6. Hệ thống Hiển thị màn hình Yêu cầu gửi khách trọ
+7.Chủ nhà trọ (người muốn gửi) Nhập thông tin trên form “Yêu cầu gửi khách trọ”
+8.Chủ nhà trọ (người muốn gửi) Yêu cầu gửi người thuê nhà
+9. Hệ thống kiểm tra thông tin và Gửi yêu cầu tới người thuê nhà
+10. Người thuê nhà Chấp nhận yêu cầu gửi khách trọ
+11. Hệ thống Gửi yêu cầu đến chủ trọ được nhờ
+12. Chủ nhà trọ (người được nhờ) Chấp nhận yêu cầu gửi khách trọ
+13. Hệ thống Cập nhật trạng thái “Đang được gửi” với người thuê nhà vừa được gửi
+14. Use case kết thúc 
 
 Exception flow 
-4a. Hệ thống Thông báo lỗi: dữ liệu không hợp lệ, yêu cầu nhập lại
-8a. Người thuê nhà Hủy bỏ yêu cầu gửi khách trọ
-10a.Chủ nhà trọ (người được nhờ) Hủy bỏ yêu cầu gửi khách trọ
+Tại bước 9, hệ thống kiểm tra thông tin nhập vào không hợp lệ
+9a. Hệ thống Thông báo lỗi: dữ liệu không hợp lệ, yêu cầu nhập lại
+Use case quay lại bước 6
+
+10b. Người thuê nhà Hủy bỏ yêu cầu gửi khách trọ
+11b. Hệ thống thông báo cho chủ trọ
+Use case kết thúc
+
+ 
+12c.Chủ nhà trọ (người được nhờ) Hủy bỏ yêu cầu gửi khách trọ
+13c. Hệ thống thông báo tới chủ nhà trọ và người thuê nhà
+Use case kết thúc

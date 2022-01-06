@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC09AddRoomRentalBill" description="User wants to access into the system">
+    <activitypartition name="Landlord"/>
+    <activitypartition name="System"/>
+    <preCondition condition="User logged in as Landlord"/>
+    <activityEdge sourceNode="/0/@actionNode.8" targetNode="/0/@decisionNode.0" edgeName="9-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.10" edgeName="D.1-10a"/>
+    <activityEdge sourceNode="/0/@actionNode.10" targetNode="/0/@actionNode.5" edgeName="10a-6"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@actionNode.2" edgeName="2-3"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@actionNode.4" edgeName="4-5"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@actionNode.5" edgeName="5-6"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.6" edgeName="6-7"/>
+    <activityEdge sourceNode="/0/@actionNode.6" targetNode="/0/@actionNode.7" edgeName="7-8"/>
+    <activityEdge sourceNode="/0/@actionNode.7" targetNode="/0/@actionNode.8" edgeName="8-9"/>
+    <activityEdge sourceNode="/0/@actionNode.9" targetNode="/0/@finalNode" edgeName="10-End"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.9" edgeName="D.1-10"/>
+    <actionNode outgoing="/0/@activityEdge.4" incoming="/0/@activityEdge.3" name="1" action="Landlord selects &quot;Invoice Management&quot; function" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.5" incoming="/0/@activityEdge.4" name="2" action="System displays a list of unbilled rooms" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.6" incoming="/0/@activityEdge.5" name="3" action="Landlord selects the room to be billed" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.7" incoming="/0/@activityEdge.6" name="4" action="System displays room information" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.8" incoming="/0/@activityEdge.7" name="5" action="Landlord selects the function &#x201c;Create Invoice&#x201d;" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.9" incoming="/0/@activityEdge.2 /0/@activityEdge.8" name="6" action="System displays the Invoicing interface" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.10" incoming="/0/@activityEdge.9" name="7" action="Landlord enters information on the Invoice form" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.11" incoming="/0/@activityEdge.10" name="8" action="Landlord requests to create invoice" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.0" incoming="/0/@activityEdge.11" name="9" action="System checks the data entered" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.12" incoming="/0/@activityEdge.13" name="10" action="System notifies invoice successfully " performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.2" incoming="/0/@activityEdge.1" name="10a" action="System Error message: invalid data, request retype" performedBy="/0/@activitypartition.1"/>
+    <finalNode incoming="/0/@activityEdge.12" name="End"/>
+    <initialNode outgoing="/0/@activityEdge.3" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.13" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="If the data entered on the form is not valid"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC09AddRoomRentalBillTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.8 /0/@actionNode.9 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@actionNode.7 /0/@actionNode.8 /0/@decisionNode.0 /0/@actionNode.10 /2 /3 /4 /5 /0/@actionNode.9 /0/@finalNode"/>
+  </ControlFlowGraph>
+  <Action name="6" action="System displays the Invoicing interface"/>
+  <Action name="7" action="Landlord enters information on the Invoice form"/>
+  <Action name="8" action="Landlord requests to create invoice"/>
+  <Action name="9" action="System checks the data entered"/>
+</xmi:XMI>

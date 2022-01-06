@@ -14,3 +14,5 @@ trọ của tôi” của người thuê nhà
 
 Exception flow
 5a. Chủ nhà trọ Hủy bỏ yêu cầu thuê nhà
+6a. Hệ thống thông báo tới người thuê
+Use case kết thúc

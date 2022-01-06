@@ -1,0 +1,78 @@
+Test Case #1
+Start
+1.Landlord (who  wants to send) selects room management function
+2.System displays the list of the landlord's rooms
+3.Landlord (who wants to send) selects view tenant information function
+4.System displays tenant information 
+5.Landlord (who wants to send) selects "send tenant function"
+6.System displays "request to  send tenant screen"
+7.Landlard (who wants to send) enters information on form "request to send tenant"
+8.Landlord (who wants to send) requests to send tenant
+9.System checks information and sends request to send tenant
+10.Tenant accepts request to send tenant
+11.System sends request to landlord (requested person)
+12.Landlord (requested person) accepts request to send tenant 
+13.System updates "Being sent" status for tenant who has just been sent
+14.Use case ends
+End
+
+Test Case #2
+Start
+1.Landlord (who  wants to send) selects room management function
+2.System displays the list of the landlord's rooms
+3.Landlord (who wants to send) selects view tenant information function
+4.System displays tenant information 
+5.Landlord (who wants to send) selects "send tenant function"
+6.System displays "request to  send tenant screen"
+7.Landlard (who wants to send) enters information on form "request to send tenant"
+8.Landlord (who wants to send) requests to send tenant
+9.System checks information and sends request to send tenant
+D.1.If system checks data unsuccessfully 
+9a.System Error message: invalid data, request retype
+6.System displays "request to  send tenant screen"
+7.Landlard (who wants to send) enters information on form "request to send tenant"
+8.Landlord (who wants to send) requests to send tenant
+9.System checks information and sends request to send tenant
+10.Tenant accepts request to send tenant
+11.System sends request to landlord (requested person)
+12.Landlord (requested person) accepts request to send tenant 
+13.System updates "Being sent" status for tenant who has just been sent
+14.Use case ends
+End
+
+Test Case #3
+Start
+1.Landlord (who  wants to send) selects room management function
+2.System displays the list of the landlord's rooms
+3.Landlord (who wants to send) selects view tenant information function
+4.System displays tenant information 
+5.Landlord (who wants to send) selects "send tenant function"
+6.System displays "request to  send tenant screen"
+7.Landlard (who wants to send) enters information on form "request to send tenant"
+8.Landlord (who wants to send) requests to send tenant
+9.System checks information and sends request to send tenant
+10.Tenant accepts request to send tenant
+D.2.If tenant cancels request to send tenant 
+11b.System notifies to landlord (who  wants to send)
+14.Use case ends
+End
+
+Test Case #4
+Start
+1.Landlord (who  wants to send) selects room management function
+2.System displays the list of the landlord's rooms
+3.Landlord (who wants to send) selects view tenant information function
+4.System displays tenant information 
+5.Landlord (who wants to send) selects "send tenant function"
+6.System displays "request to  send tenant screen"
+7.Landlard (who wants to send) enters information on form "request to send tenant"
+8.Landlord (who wants to send) requests to send tenant
+9.System checks information and sends request to send tenant
+10.Tenant accepts request to send tenant
+11.System sends request to landlord (requested person)
+12.Landlord (requested person) accepts request to send tenant 
+D.3.If landlord (requestet person) cancels request to send tenant
+13c.System notifies to landlord (who wants to send) and tenant 
+14.Use case ends
+End
+

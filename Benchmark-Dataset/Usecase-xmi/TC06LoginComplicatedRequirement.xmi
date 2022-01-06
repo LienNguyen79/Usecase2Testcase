@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC06LoginComplicated"
+    description="User wants to access into the system">
+  <postConditions
+      condition="System grants access to the user"/>
+  <actor name="User"/>
+  <actor name="System"/>
+  <actor name="Google"/>
+  <actor name="Facebook"/>
+  <mainFlow>
+    <mainstep
+        action="User accesses Medium application"
+        stepID="1"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System asks for login information"
+        stepID="2"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="User enters Medium account and selects login command"
+        stepID="3"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System validates the login information "
+        stepID="4"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System allows access and records successful logging in Activity Log."
+        stepID="5"
+        performedBy="//@actor.1"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.4"
+      referenceStep="//@mainFlow/@mainstep.1">
+    <mainstep
+        action="System switches to the Google login screen"
+        stepID="2a1"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="User enters Google account and selects login command"
+        stepID="3a"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="Google validates login information"
+        stepID="4a"
+        performedBy="//@actor.2"/>
+    <exceptionCondition
+        condition="If user chooses a login method a Gmail account"/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.4"
+      referenceStep="//@mainFlow/@mainstep.1">
+    <mainstep
+        action="System switches to Facebook's login screen"
+        stepID="2b1"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="User enters Facebook account and selects login command"
+        stepID="3b"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action=" Facebook validates login information"
+        stepID="4b"
+        performedBy="//@actor.3"/>
+    <exceptionCondition
+        condition="User chooses login method with Facebook account"/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@mainFlow/@mainstep.3">
+    <mainstep
+        action="System displays a message "
+        stepID="4.1"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If system validates the login failed "/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@alternativeflow.0/@mainstep.2">
+    <mainstep
+        action="System displays a message"
+        stepID="4a.1"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If Google validates the login failed"/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.1"
+      referenceStep="//@alternativeflow.1/@mainstep.2">
+    <mainstep
+        action="System displays a message "
+        stepID="4b.1"
+        performedBy="//@actor.1"/>
+    <exceptionCondition
+        condition="If Facebook validates the login failed"/>
+  </alternativeflow>
+</FunctionalRequirement>

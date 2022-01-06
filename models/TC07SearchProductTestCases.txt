@@ -1,0 +1,34 @@
+Test Case #1
+Start
+1.System displays website 
+2.User enters search terms in the search box and selects submit
+3.System searches and gives a list of products that satisfy the criteria
+4.User can sort the list by name or price
+End
+
+Test Case #2
+Start
+1.System displays website 
+2.User enters search terms in the search box and selects submit
+3.System searches and gives a list of products that satisfy the criteria
+4.User can sort the list by name or price
+D.1.If user enters the wrong search condition and submits form (do not select a price range and do not enter a name)
+3a.System displays a message of conditional input
+2.User enters search terms in the search box and selects submit
+3.System searches and gives a list of products that satisfy the criteria
+4.User can sort the list by name or price
+End
+
+Test Case #3
+Start
+1.System displays website 
+2.User enters search terms in the search box and selects submit
+3.System searches and gives a list of products that satisfy the criteria
+4.User can sort the list by name or price
+D.2.If system does not find any products that match the search criteria
+3b.System displays a message that no satisfied products were found
+2.User enters search terms in the search box and selects submit
+3.System searches and gives a list of products that satisfy the criteria
+4.User can sort the list by name or price
+End
+

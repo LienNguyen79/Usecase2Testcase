@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns="http://omg.org/spec/UML/ActivityDiagram">
+  <Activity name="TC08RoomRental" description="User wants to access into the system">
+    <activitypartition name="Tenant"/>
+    <activitypartition name="Landlord"/>
+    <activitypartition name="System"/>
+    <preCondition condition="User logged in as Tenant"/>
+    <activityEdge sourceNode="/0/@actionNode.4" targetNode="/0/@decisionNode.0" edgeName="5-D.1"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.7" edgeName="D.1-6a"/>
+    <activityEdge sourceNode="/0/@actionNode.7" targetNode="/0/@actionNode.6" edgeName="6a-7"/>
+    <activityEdge sourceNode="/0/@initialNode" targetNode="/0/@actionNode.0" edgeName="Start-1"/>
+    <activityEdge sourceNode="/0/@actionNode.0" targetNode="/0/@actionNode.1" edgeName="1-2"/>
+    <activityEdge sourceNode="/0/@actionNode.1" targetNode="/0/@actionNode.2" edgeName="2-3"/>
+    <activityEdge sourceNode="/0/@actionNode.2" targetNode="/0/@actionNode.3" edgeName="3-4"/>
+    <activityEdge sourceNode="/0/@actionNode.3" targetNode="/0/@actionNode.4" edgeName="4-5"/>
+    <activityEdge sourceNode="/0/@actionNode.5" targetNode="/0/@actionNode.6" edgeName="6-7"/>
+    <activityEdge sourceNode="/0/@actionNode.6" targetNode="/0/@finalNode" edgeName="7-End"/>
+    <activityEdge sourceNode="/0/@decisionNode.0" targetNode="/0/@actionNode.5" edgeName="D.1-6"/>
+    <actionNode outgoing="/0/@activityEdge.4" incoming="/0/@activityEdge.3" name="1" action="Tenant views post details" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.5" incoming="/0/@activityEdge.4" name="2" action="Tenant chooses rent Now" performedBy="/0/@activitypartition.0"/>
+    <actionNode outgoing="/0/@activityEdge.6" incoming="/0/@activityEdge.5" name="3" action="System sends a rental request to landlord" performedBy="/0/@activitypartition.2"/>
+    <actionNode outgoing="/0/@activityEdge.7" incoming="/0/@activityEdge.6" name="4" action="Landlord views rental request information" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.0" incoming="/0/@activityEdge.7" name="5" action="Landlord accepts rental request" performedBy="/0/@activitypartition.1"/>
+    <actionNode outgoing="/0/@activityEdge.8" incoming="/0/@activityEdge.10" name="6" action="System displays the rented room in the &quot;my room&quot; menu of the tenant" performedBy="/0/@activitypartition.2"/>
+    <actionNode outgoing="/0/@activityEdge.9" incoming="/0/@activityEdge.2 /0/@activityEdge.8" name="7" action="Use case ends"/>
+    <actionNode outgoing="/0/@activityEdge.2" incoming="/0/@activityEdge.1" name="6a" action="System notifies to tenant" performedBy="/0/@activitypartition.2"/>
+    <finalNode incoming="/0/@activityEdge.9" name="End"/>
+    <initialNode outgoing="/0/@activityEdge.3" name="Start"/>
+    <decisionNode outgoing="/0/@activityEdge.1 /0/@activityEdge.10" incoming="/0/@activityEdge.0" name="D.1">
+      <predicate condition="If landlord cancels rental request"/>
+    </decisionNode>
+  </Activity>
+  <ControlFlowGraph name="TC08RoomRentalTestCases">
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@actionNode.5 /0/@actionNode.6 /0/@finalNode"/>
+    <path nodes="/0/@initialNode /0/@actionNode.0 /0/@actionNode.1 /0/@actionNode.2 /0/@actionNode.3 /0/@actionNode.4 /0/@decisionNode.0 /0/@actionNode.7 /0/@actionNode.6 /0/@finalNode"/>
+  </ControlFlowGraph>
+</xmi:XMI>

@@ -1,0 +1,23 @@
+Test Case #1
+Start
+1.Tenant views post details
+2.Tenant chooses rent Now
+3.System sends a rental request to landlord
+4.Landlord views rental request information
+5.Landlord accepts rental request
+6.System displays the rented room in the "my room" menu of the tenant
+7.Use case ends
+End
+
+Test Case #2
+Start
+1.Tenant views post details
+2.Tenant chooses rent Now
+3.System sends a rental request to landlord
+4.Landlord views rental request information
+5.Landlord accepts rental request
+D.1.If landlord cancels rental request
+6a.System notifies to tenant
+7.Use case ends
+End
+

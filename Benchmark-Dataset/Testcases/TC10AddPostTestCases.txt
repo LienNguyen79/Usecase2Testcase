@@ -1,0 +1,49 @@
+Test Case #1
+Start
+1.Landlord selects "Post Management" function
+2.System displays a list of posts
+3.Landlord selects add post
+4.System displays post information screen
+5.Landlord enters information on the form “post information”
+6.Landlord requests to save post
+7.System verifies data and sends request to admin
+8.Admin approves post
+9.System displays landlord's post on the homepage
+10.Use case ends
+End
+
+Test Case #2
+Start
+1.Landlord selects "Post Management" function
+2.System displays a list of posts
+3.Landlord selects add post
+4.System displays post information screen
+5.Landlord enters information on the form “post information”
+6.Landlord requests to save post
+7.System verifies data and sends request to admin
+D.1.If system verifies data unsuccessfully 
+7a.System Error message: invalid data, request retype
+4.System displays post information screen
+5.Landlord enters information on the form “post information”
+6.Landlord requests to save post
+7.System verifies data and sends request to admin
+8.Admin approves post
+9.System displays landlord's post on the homepage
+10.Use case ends
+End
+
+Test Case #3
+Start
+1.Landlord selects "Post Management" function
+2.System displays a list of posts
+3.Landlord selects add post
+4.System displays post information screen
+5.Landlord enters information on the form “post information”
+6.Landlord requests to save post
+7.System verifies data and sends request to admin
+8.Admin approves post
+D.2.If admin cancels post request
+9a.System sends a canceled post notification to the landlord
+10.Use case ends
+End
+

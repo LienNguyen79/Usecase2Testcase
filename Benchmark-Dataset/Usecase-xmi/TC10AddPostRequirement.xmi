@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FunctionalRequirement
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://omg.org/spec/UML/usecase"
+    xsi:schemaLocation="http://omg.org/spec/UML/usecase ../metamodels/Usecase_Metamodel.ecore"
+    name="TC10AddPost"
+    description="User wants to access into the system">
+  <preConditions
+      condition="User logged in as Landlord"/>
+  <actor name="Landlord"/>
+  <actor name="Admin"/>
+  <actor name="System"/>
+  <mainFlow>
+    <mainstep
+        action="Landlord selects &quot;Post Management&quot; function"
+        stepID="1"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System displays a list of posts"
+        stepID="2"
+        performedBy="//@actor.2"/>
+    <mainstep
+        action="Landlord selects add post"
+        stepID="3"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System displays post information screen"
+        stepID="4"
+        performedBy="//@actor.2"/>
+    <mainstep
+        action="Landlord enters information on the form “post information”"
+        stepID="5"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="Landlord requests to save post"
+        stepID="6"
+        performedBy="//@actor.0"/>
+    <mainstep
+        action="System verifies data and sends request to admin"
+        stepID="7"
+        performedBy="//@actor.2"/>
+    <mainstep
+        action="Admin approves post"
+        stepID="8"
+        performedBy="//@actor.1"/>
+    <mainstep
+        action="System displays landlord's post on the homepage"
+        stepID="9"
+        performedBy="//@actor.2"/>
+    <mainstep
+        action="Use case ends"
+        stepID="10"/>
+  </mainFlow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.3"
+      referenceStep="//@mainFlow/@mainstep.6">
+    <mainstep
+        action="System Error message: invalid data, request retype"
+        stepID="7a"
+        performedBy="//@actor.2"/>
+    <exceptionCondition
+        condition="If system verifies data unsuccessfully "/>
+  </alternativeflow>
+  <alternativeflow
+      nextStep="//@mainFlow/@mainstep.9"
+      referenceStep="//@mainFlow/@mainstep.7">
+    <mainstep
+        action="System sends a canceled post notification to the landlord"
+        stepID="9a"
+        performedBy="//@actor.2"/>
+    <exceptionCondition
+        condition="If admin cancels post request"/>
+  </alternativeflow>
+</FunctionalRequirement>
